@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <ImageView
+        android:id="@+id/imageViewClose1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/menu_back_black"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewClose2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/ic_menu_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/menu_logo"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_photo_profile"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/namePetMenuAction"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/name"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/StyleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/menu"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+
+    <ImageView
+        android:id="@+id/imageBtnMenuOpenMedCartFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_med"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textBtnMenuOpenMedCartFragment"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/med"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintStart_toEndOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnMenuOpenMedCartFragment" />
+
+    <ImageView
+        android:id="@+id/imageBtnMenuOpenAchievemens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_achiv"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnMenuOpenMedCartFragment" />
+
+    <TextView
+        android:id="@+id/textBtnMenuOpenAchievemens"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/achievements"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnMenuOpenAchievemens"
+        app:layout_constraintStart_toStartOf="@+id/textBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnMenuOpenAchievemens" />
+
+    <ImageView
+        android:id="@+id/imageBtnMenuOpenKnitting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_breeding"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnMenuOpenAchievemens" />
+
+    <TextView
+        android:id="@+id/textBtnMenuOpenKnitting"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/breeding"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnMenuOpenKnitting"
+        app:layout_constraintStart_toStartOf="@+id/textBtnMenuOpenAchievemens"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnMenuOpenKnitting" />
+
+    <ImageView
+        android:id="@+id/imageBtnMenuOpenPedigree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_pedigree"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnMenuOpenKnitting" />
+
+    <TextView
+        android:id="@+id/textBtnMenuOpenPedigree"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pedigree"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnMenuOpenPedigree"
+        app:layout_constraintStart_toStartOf="@+id/textBtnMenuOpenKnitting"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnMenuOpenPedigree" />
+
+    <ImageView
+        android:id="@+id/imageBtnMenuOpenTravel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_travel"
+        app:layout_constraintEnd_toEndOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintStart_toStartOf="@+id/imageBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toBottomOf="@+id/imageBtnMenuOpenPedigree" />
+
+    <TextView
+        android:id="@+id/textBtnMenuOpenTravel"
+        style="@style/StyleHeaderGreen"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/travel"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBtnMenuOpenTravel"
+        app:layout_constraintStart_toStartOf="@+id/textBtnMenuOpenMedCartFragment"
+        app:layout_constraintTop_toTopOf="@+id/imageBtnMenuOpenTravel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

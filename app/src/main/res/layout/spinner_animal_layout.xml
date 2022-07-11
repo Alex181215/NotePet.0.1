@@ -1,0 +1,34 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_spinner"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/text_view_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/other"
+        android:textSize="15sp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/set_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/roboto"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:inputType="text|textCapSentences"
+        android:backgroundTint="@color/green"
+        >
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

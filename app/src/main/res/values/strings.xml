@@ -1,0 +1,163 @@
+<resources>
+    <string name="app_name">NotePet.01</string>
+    // Заголовки Верхний Бар
+    <string name="get_pet">Добавить питомца</string>
+    <string name="my_pet">Мои питомцы</string>
+    <string name="profile">Профиль питомца</string>
+    <string name="noteS">Заметки</string>
+    <string name="history">История</string>
+    <string name="editor">Редактирование</string>
+
+
+    // Нижний Бра
+    <string name="menu">Меню</string>
+    <string name="note">Заметки</string>
+    <string name="profil">Питомцы</string>
+
+    // Основная информацмя
+    <string name="info">Основная информация:</string>
+    <string name="name">Имя</string>
+    <string name="DateOfBirth">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="male">Муж.</string>
+    <string name="female">Жен.</string>
+    <string name="chip">Номер чипа</string>
+    <string name="pet">Питомец</string>
+    <string name="breed">Порода</string>
+    <string name="color">Окрас</string>
+
+    // Параметры
+    <string name="parameters">Параметры</string>
+    <string name="height">Высота</string>
+    <string name="weight">Вес</string>
+    <string name="gram">гр.</string>
+    <string-array name="gr">
+        <item>гр.</item>
+        <item>кг.</item>
+    </string-array>
+    <string name="kilogram">кг.</string>
+    <string name="centimeter">см.</string>
+    <string name="bust">Обхват груди</string>
+    <string name="back_length">Длина спины</string>
+    <string name="neck_to_groin">Длина</string>
+    <string name="neck_to_groin2">от шеи до паха</string>
+    <string name="neck_volume">Обхват шеи</string>
+    <string name="paw_length">Длина лапы</string>
+    <string name="paw_width">Ширина лапы</string>
+
+    // Иная информация
+    <string name="otherInformation">Иная информация</string>
+    <string name="castration">Кастрация</string>
+    <string name="tochG">г.</string>
+    <string name="toch1">.</string>
+    <string name="cycle">Экстральный цикл (период)</string>
+    <string name="from">от</string>
+    <string name="before">до</string>
+    <string name="nursery">Питомник</string>
+    <string name="notes">Примечание</string>
+    <string name="set_text">Введите текст</string>
+
+    // Допы
+    <string name="kindOfAnimal">Вид питомца</string>
+    <string name="other">Введите свой вариант:</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="cancel">Отмена</string>
+
+    // Кнопки
+    <string name="save">Сохранить</string>
+    <string name="setclock">Установить напоминание</string>
+    <string name="set">Добавить</string>
+    <string name="delete">Удалить питомца</string>
+
+    // Спиннер
+    <string name="editDateStat">Введите дату и причину изменения:</string>
+    <string name="cause">Причина</string>
+    <string name="data">Дата</string>
+
+    // Запрос истории
+    <string name="historyEdit">История изменений:</string>
+    <string name="parameter">Параметр</string>
+    <string name="period">Период</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    //Достижения
+    <string name="newExhibitions">Новая выставка</string>
+    <string name="heading">Название</string>
+    <string name="status">Статус</string>
+    <string-array name="status">
+        <item>Гость</item>
+        <item>Участник</item>
+    </string-array>
+    <string name="expertName">ФИО эксперта</string>
+    <string name="newOccupation">Новое занятие</string>
+    <string name="address">Адрес</string>
+    <string name="cynologistName">ФИО кинолога</string>
+    <string name="cynologistPhone">Номер телефона кинолога</string>
+
+    //Медицинская книжка
+    <string name="drugName">Название препарата</string>
+    <string name="validity">Период действия</string>
+    <string name="noteMed">Примечание</string>
+    <string name="dateOfManufacture">Дата изготовления</string>
+    <string name="makingAnAppointment">Новая запись на прием</string>
+    <string name="time">Время приема</string>
+    <string name="reason">Причина обращения ко врачу</string>
+    <string name="doctorName">ФИО врача</string>
+    <string name="phone">Номер телефона клиники</string>
+    <string name="code">+7</string>
+    <string name="adress">Адрес клиники</string>
+    <string name="diagnosis">Симптомы</string>
+    <string name="disease">(Заболевание)</string>
+    <string name="startDate">Дата начала</string>
+    <string name="readingsTemp">Показания температуры</string>
+    <string name="temperature">°С</string>
+    <string name="add">Добавить</string>
+    <string name="doctorAppointment">Назначение врача</string>
+    <string name="addPhoto">Добавить фото</string>
+    <string name="addFile">Добавить видео</string>
+    <string name="reAdmissionDate">Дата повторного приема</string>
+    <string name="analise">Анализы</string>
+    <string name="analiseDate">Дата сдачи</string>
+    <string name="analiseName">Название анализа</string>
+    <string name="readyDate">Дата готовности</string>
+    <string name="addAnalise">Добавить направление</string>
+
+    // Допы от верстальщика
+    <string name="empty">Здесь пока ничего нет</string>
+    <string name="addNote">Добавить запись</string>
+    <string name="newNote">Новая запись</string>
+    <string name="med">Медицинская карта</string>
+    <string name="achievements">Достижения</string>
+    <string name="breeding">Разведение животных</string>
+    <string name="pedigree">Родословная</string>
+    <string name="travel">Прогулки Путешествия</string>
+    <string name="travel2">В разработке</string>
+
+
+    //Разведение
+    <string-array name="pet">
+        <item>Кошка</item>
+        <item>Собака</item>
+        <item>Попугай</item>
+        <item>Хомяк</item>
+        <item>Хорек</item>
+    </string-array>
+    <string name="knitting">Вязка</string>
+    <string name="knitting1stDate">Дата первой вязки</string>
+    <string name="knitting2ndDate">Дата второй вязки</string>
+    <string name="knitting3rdDate">Дата третьей вязки</string>
+    <string name="dateOfBirth">Дата родов</string>
+    <string name="uzi">Результат УЗИ</string>
+    <string name="addYoung">Добавить детеныша</string>
+
+
+    //Родословная
+    <string name="i">и</string>
+    <string name="young">Детеныши:</string>
+    <string name="newPedigree">Создать новую связь</string>
+    <string name="addPedigree">Создать связь</string>
+
+</resources>

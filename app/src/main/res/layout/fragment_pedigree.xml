@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPedigree">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_photo_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_photo_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView49"
+                style="@style/StyleHeaderGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/name"
+                app:layout_constraintStart_toEndOf="@+id/imageView20"
+                app:layout_constraintTop_toTopOf="@+id/imageView20" />
+
+            <TextView
+                android:id="@+id/textView50"
+                style="@style/StyleHeaderGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/name"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+                app:layout_constraintEnd_toStartOf="@+id/imageView21" />
+
+            <TextView
+                android:id="@+id/textView51"
+                style="@style/StyleHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/i"
+                app:layout_constraintBottom_toTopOf="@+id/textView50"
+                app:layout_constraintEnd_toEndOf="@+id/textView50"
+                app:layout_constraintStart_toStartOf="@+id/textView49"
+                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+            <TextView
+                android:id="@+id/textView52"
+                style="@style/StyleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/young"
+                app:layout_constraintStart_toStartOf="@+id/imageView20"
+                app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                app:columnCount="4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView52"
+                app:orientation="horizontal">
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:text="Рокки" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Бетховен" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Литиция" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Рональд" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Рональд" />
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:text="Рокки" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Бетховен" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Литиция" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Рональд" />
+
+                <TextView
+                    style="@style/StyleHeader"
+                    android:padding="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Рональд" />
+
+            </androidx.gridlayout.widget.GridLayout>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/layoutSetTextKnitting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/plusred" />
+
+        <TextView
+            android:id="@+id/textViewPedigree"
+            style="@style/StyleHeaderGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/newPedigree" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentNote">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/layout_scrollView"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarThumbVertical="@android:color/white"
+            android:scrollbars="none">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="600dp">
+
+                <LinearLayout
+                    android:id="@+id/note"
+                    android:layout_width="match_parent"
+                    android:layout_height="370dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/shape_white"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/pole_note"
+                        style="@style/StyleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_white"
+                        android:focusable="true"
+                        android:hint="Введите заголовок"
+                        android:imeOptions="actionNext"
+                        android:inputType="text|textCapSentences"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/pole_note2"
+                        style="@style/StyleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_white"
+                        android:focusable="true"
+                        android:inputType="textMultiLine|text"
+                        android:padding="5dp"
+                        android:hint="Введите текст"
+                        android:paddingStart="10dp"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/getClock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/note"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageClock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/clock" />
+
+                    <TextView
+                        android:id="@+id/textClock"
+                        style="@style/StyleHeaderGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/setclock"
+                        android:layout_marginEnd="10dp"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/getpetmenu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/choice"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/getpetmenutext"
+            style="@style/StyleHeaderGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="17dp"
+            android:gravity="center"
+            android:text="@string/save" />
+    </LinearLayout>
+</RelativeLayout>

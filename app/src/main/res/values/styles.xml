@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StyleText">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="StyleTextBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="StyleHeader">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/text_shadow_home</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
+
+    <style name="StyleHeaderGreen">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/green</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/text_shadow_home</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
+
+    <style name="StyleEditTextMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text|textCapSentences</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">30</item>
+        <item name="android:text">""</item>
+    </style>
+
+    <style name="StyleEditTextLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text|textCapSentences</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">40</item>
+        <item name="android:text">""</item>
+    </style>
+
+    <style name="StyleEditTextNote">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text|textCapSentences|textMultiLine</item>
+        <item name="android:maxLength">975</item>
+        <item name="android:text">""</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:hint">@string/set_text</item>
+    </style>
+
+    <style name="StyleNumberDayMount">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">datetime</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:text">""</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColorHint">"@color/green"</item>
+    </style>
+
+    <style name="StyleNumberAge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">datetime</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">4</item>
+        <item name="android:text">""</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="StyleNumberChip">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">40</item>
+        <item name="android:text">""</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="StyleNumberParams">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">4</item>
+        <item name="android:text">""</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="LayoutSh">
+        <item name="android:shadowDx">10</item>
+        <item name="android:shadowDy">10</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
+
+</resources>
