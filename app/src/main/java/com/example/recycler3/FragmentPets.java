@@ -143,7 +143,11 @@ public class FragmentPets extends Fragment implements RecyclerViewClickInterface
                 animal = sharedPreferences5.getString("animal" + i, "");
 
                 nameList.add(name);
-                ageCalculator.ageCalculator(day, mount, age, (ArrayList) ageList, animal);
+                if(!day.equals("00")){
+                    ageCalculator.ageCalculator(day, mount, age, (ArrayList) ageList, animal);
+                } else {
+                    ageList.add("");
+                }
                 idList.add(i + "");
             }
         }

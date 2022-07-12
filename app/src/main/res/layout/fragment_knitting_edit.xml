@@ -114,6 +114,17 @@
                     android:clickable="true"
                     android:focusable="true" />
 
+                <ImageButton
+                    android:id="@+id/btn_show_params22"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/minus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone" />
+
 
             </LinearLayout>
 
@@ -529,6 +540,17 @@
                     android:background="@drawable/plusred"
                     android:clickable="true"
                     android:focusable="true" />
+
+                <ImageButton
+                    android:id="@+id/btn_show_params1"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/minus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone" />
             </LinearLayout>
 
 
@@ -978,6 +1000,18 @@
                     android:background="@drawable/plusred"
                     android:clickable="true"
                     android:focusable="true" />
+
+                <ImageButton
+                    android:id="@+id/imageChild2"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/minus"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true" />
+
             </LinearLayout>
 
             <LinearLayout

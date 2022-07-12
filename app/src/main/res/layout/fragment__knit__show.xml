@@ -36,7 +36,7 @@
                     android:id="@+id/ava"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/ava"
                     android:scaleType="centerCrop" />
@@ -114,6 +114,17 @@
                     android:clickable="true"
                     android:focusable="true" />
 
+                <ImageButton
+                    android:id="@+id/btn_show_params22"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/minus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone" />
+
 
             </LinearLayout>
 
@@ -139,10 +150,12 @@
                 <EditText
                     android:id="@+id/day1"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -154,10 +167,12 @@
                 <EditText
                     android:id="@+id/mount1"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -169,10 +184,12 @@
                 <EditText
                     android:id="@+id/age1"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -204,10 +221,12 @@
                 <EditText
                     android:id="@+id/day2"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -219,10 +238,12 @@
                 <EditText
                     android:id="@+id/mount2"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -234,10 +255,12 @@
                 <EditText
                     android:id="@+id/age2"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -269,10 +292,12 @@
                 <EditText
                     android:id="@+id/day3"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -284,10 +309,12 @@
                 <EditText
                     android:id="@+id/mount3"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -299,10 +326,12 @@
                 <EditText
                     android:id="@+id/age3"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -334,10 +363,12 @@
                 <EditText
                     android:id="@+id/day4"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -349,10 +380,12 @@
                 <EditText
                     android:id="@+id/mount4"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -364,10 +397,12 @@
                 <EditText
                     android:id="@+id/age4"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -399,10 +434,12 @@
                 <EditText
                     android:id="@+id/day5"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -414,10 +451,12 @@
                 <EditText
                     android:id="@+id/mount5"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -429,10 +468,12 @@
                 <EditText
                     android:id="@+id/age5"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:backgroundTint="@color/transparent"
+                    />
 
                 <TextView
                     style="@style/StyleText"
@@ -529,6 +570,18 @@
                     android:background="@drawable/plusred"
                     android:clickable="true"
                     android:focusable="true" />
+
+                <ImageButton
+                    android:id="@+id/btn_show_params1"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/minus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
 
@@ -549,6 +602,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView45" />
@@ -575,12 +629,13 @@
 
                 <EditText
                     android:id="@+id/temp1"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
+                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -606,12 +661,13 @@
 
                 <EditText
                     android:id="@+id/temp2"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
+                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -637,12 +693,13 @@
 
                 <EditText
                     android:id="@+id/temp3"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
+                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -668,12 +725,13 @@
 
                 <EditText
                     android:id="@+id/temp4"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
+                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -699,13 +757,14 @@
 
                 <EditText
                     android:id="@+id/temp5"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
                     android:textAlignment="center"
+                    android:backgroundTint="@color/transparent"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
 
@@ -730,7 +789,7 @@
 
                 <EditText
                     android:id="@+id/temp6"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
@@ -738,6 +797,7 @@
                     android:maxLength="3"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
+                    android:backgroundTint="@color/transparent"
                     android:textSize="15sp" />
 
                 <TextView
@@ -827,9 +887,10 @@
                 <EditText
                     android:id="@+id/day6"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:backgroundTint="@color/transparent"
                     android:inputType="number" />
 
                 <TextView
@@ -842,9 +903,10 @@
                 <EditText
                     android:id="@+id/mount6"
                     style="@style/StyleNumberDayMount"
-                    android:layout_width="40dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:backgroundTint="@color/transparent"
                     android:inputType="number" />
 
                 <TextView
@@ -857,9 +919,10 @@
                 <EditText
                     android:id="@+id/age6"
                     style="@style/StyleNumberAge"
-                    android:layout_width="80dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:backgroundTint="@color/transparent"
                     android:inputType="number" />
 
                 <TextView
@@ -950,18 +1013,293 @@
                 app:layout_constraintStart_toEndOf="@id/imageView13"
                 app:layout_constraintTop_toTopOf="@id/imageView13" />
 
+            <LinearLayout
+                android:id="@+id/layoutChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/text3"
+                app:layout_constraintTop_toBottomOf="@+id/textView48">
+
+
+                <TextView
+                    android:id="@+id/textChild"
+                    style="@style/StyleHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Детеныши" />
+
+                <ImageButton
+                    android:id="@+id/imageChild"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/plusred"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <ImageButton
+                    android:id="@+id/imageChild1"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/minus"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutChild1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild">
+
+
+                <TextView
+                    android:id="@+id/nameChild1"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/genderChild1"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/gataChild1"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutChild2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild1">
+
+
+                <TextView
+                    android:id="@+id/nameChild2"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/genderChild2"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/gataChild2"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutChild3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild2">
+
+
+                <TextView
+                    android:id="@+id/nameChild3"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/genderChild3"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/gataChild3"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutChild4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild3">
+
+
+                <TextView
+                    android:id="@+id/nameChild4"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/genderChild4"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/gataChild4"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layoutChild5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild4">
+
+
+                <TextView
+                    android:id="@+id/nameChild5"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/genderChild5"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+
+                <TextView
+                    android:id="@+id/gataChild5"
+                    style="@style/StyleText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChild5">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/ic_plus_green" />
+
+                <TextView
+                    style="@style/StyleHeaderGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/addYoung" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/layoutSetTextKnitting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="150dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageView13"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView48">
+                app:layout_constraintTop_toBottomOf="@id/linearLayout5">
 
                 <ImageView
                     android:id="@+id/imageSetTextKnitting"
@@ -978,19 +1316,42 @@
                     android:text="@string/setclock" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/layoutSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutSetTextKnitting">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/choice" />
+
+                <TextView
+                    style="@style/StyleHeaderGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="200dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageView13"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView48">
+                app:layout_constraintTop_toBottomOf="@id/layoutSave">
 
                 <ImageView
                     android:id="@+id/imageEdit"
@@ -1005,56 +1366,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Редактировать" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@id/linearLayout5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toEndOf="@id/imageView13"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutSetTextKnitting">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/ic_young" />
-
-                <TextView
-                    style="@style/StyleHeaderGreen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addYoung" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/layoutSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toEndOf="@id/imageView13"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout5">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/choice" />
-
-                <TextView
-                    style="@style/StyleHeaderGreen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/save" />
-
             </LinearLayout>
 
 

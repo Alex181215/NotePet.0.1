@@ -132,6 +132,18 @@ public class FragmentEdit extends Fragment {
             set("prefAgeCicleExit", "ageCicleExit", b.edTextAgeCicle2);
             set("prefNursery", "nursery", b.edTextNursery);
             set("prefNote", "note", b.edTextNote);
+
+            if(b.edTextDay.getText().toString().equals("00")){
+                b.edTextDay.setText("");
+            }
+
+            if(b.edTextMount.getText().toString().equals("00")){
+                b.edTextMount.setText("");
+            }
+
+            if(b.edTextAge.getText().toString().equals("00")){
+                b.edTextAge.setText("");
+            }
         }
     }
 

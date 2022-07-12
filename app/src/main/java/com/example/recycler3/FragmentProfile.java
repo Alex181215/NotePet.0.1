@@ -519,7 +519,11 @@ public class FragmentProfile extends Fragment {
         age = (sharedPreferences2.getString("age" + position, ""));
         animal = (sharedPreferences3.getString("animal" + position, ""));
 
-        ageCalculator.ageCalculator(day, mount, age, b.animalAge, animal);
+        if(!day.equals("00")){
+            ageCalculator.ageCalculator(day, mount, age, b.animalAge, animal);
+        } else {
+            b.animalAge.setVisibility(GONE);
+        }
     }
 
     @Override

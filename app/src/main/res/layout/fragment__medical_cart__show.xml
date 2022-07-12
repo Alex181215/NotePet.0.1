@@ -125,7 +125,7 @@
                 <EditText
                     android:id="@+id/age1"
                     style="@style/StyleNumberAge"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="number" />

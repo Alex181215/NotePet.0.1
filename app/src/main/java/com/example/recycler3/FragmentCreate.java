@@ -265,16 +265,42 @@ public class FragmentCreate extends Fragment {
     private void sendPet() {
         // когда нажимаем кнопку сохранить, если в сохраненке есть статус дитя в формате ДА
         // то тогда статус меняется на нет
-        // и открывается
+        // и открывается страница с Добавить вязку
+        // при этом сохраняются данные по Имени полу и дате рождения в данные о ребенке
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefChild", MODE_PRIVATE);
-        if(sharedPreferences.getString("child", "").equals("yes")){
+        if (sharedPreferences.getString("child", "").equals("yes")) {
 //            Toast.makeText(getActivity(), "проверка", Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefChild", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences1.edit();
             editor.putString("prefChild", "No");
             editor.apply();
 
+            for (int i = 1; i < 6; i++) {
+                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefChildNameKnit" + i, MODE_PRIVATE);
+                if (sharedPreferences2.getString("childNameKnit" + i, "").equals("")) {
+
+                    SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefChildNameKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                    editor3.putString("childNameKnit" + i, b.edTextName.getText().toString());
+                    editor3.apply();
+
+                    SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefChildGenderKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+                    editor4.putString("childGenderKnit" + i, gender);
+                    editor4.apply();
+
+                    String day = b.edTextDay.getText().toString();
+                    String mount = b.edTextMount.getText().toString();
+                    String age = b.edTextAge.getText().toString();
+
+                    SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefChildDataKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+                    editor5.putString("childDataKnit" + i, day + " . " + mount + " . " + age);
+                    editor5.apply();
+                    break;
+                }
+            }
             callback.onButtonClicked2("Child", 1, 1);
         } else {
             FragmentPets pets = new FragmentPets();
@@ -645,19 +671,6 @@ public class FragmentCreate extends Fragment {
 
     public void saveM() {
         b.buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
-        b.getpetmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                save();
-            }
-        });
-
-        b.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 save();

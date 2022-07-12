@@ -235,6 +235,59 @@ public class FragmentKnittingCreate extends Fragment implements View.OnClickList
         } else if (!b.nameWomen.getText().toString().equals("")) {
             nameWomen = b.nameWomen.getText().toString();
             saveNameWomen(nameWomen);
+
+            // этот кусок кода новый, тут пишем что если у нас есть пустое поле для сохранение то сохраняем туда имя
+            for (int i = 1; i < 100; i++) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefName" + i, MODE_PRIVATE);
+                if (sharedPreferences.getString("name" + i, "").equals("")) {
+
+                    // имя
+                    SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefName" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                    editor1.putString("name"+i, b.nameWomen.getText().toString());
+                    editor1.apply();
+
+                    // статус актуальное
+                    SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMyStatus" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                    editor2.putString("myStatus" + i, "Актуальное");
+                    editor2.apply();
+
+                    // день рождения
+                    SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefDay"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                    editor3.putString("day"+i, "00");
+                    editor3.apply();
+
+                    // месяц рождения
+                    SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefMount"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+                    editor4.putString("mount"+i, "00");
+                    editor4.apply();
+
+                    // год рождения
+                    SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefAge"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+                    editor5.putString("age"+i, "00");
+                    editor5.apply();
+
+                    // пол
+                    SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefGender"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor6 = sharedPreferences6.edit();
+                    editor6.putString("gender"+i, "Женский");
+                    editor6.apply();
+
+                    // вид животного
+                    SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefAnimal"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor7 = sharedPreferences7.edit();
+                    editor7.putString("animal"+i, "Нет вида");
+                    editor7.apply();
+
+                    Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
+
         }
 
 
@@ -244,9 +297,61 @@ public class FragmentKnittingCreate extends Fragment implements View.OnClickList
         } else if (!b.nameMan.getText().toString().equals("")) {
             nameMan = b.nameMan.getText().toString();
             saveNameMan(nameMan);
+
+
+            // этот кусок кода новый, тут пишем что если у нас есть пустое поле для сохранение то сохраняем туда имя
+            for (int i = 1; i < 100; i++) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefName" + i, MODE_PRIVATE);
+                if (sharedPreferences.getString("name" + i, "").equals("")) {
+
+                    // имя
+                    SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefName" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                    editor1.putString("name"+i, b.nameMan.getText().toString());
+                    editor1.apply();
+
+                    // статус актуальное
+                    SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMyStatus" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                    editor2.putString("myStatus" + i, "Актуальное");
+                    editor2.apply();
+
+                    // день рождения
+                    SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefDay"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                    editor3.putString("day"+i, "00");
+                    editor3.apply();
+
+                    // месяц рождения
+                    SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefMount"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+                    editor4.putString("mount"+i, "00");
+                    editor4.apply();
+
+                    // год рождения
+                    SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefAge"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+                    editor5.putString("age"+i, "00");
+                    editor5.apply();
+
+                    // пол
+                    SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefGender"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor6 = sharedPreferences6.edit();
+                    editor6.putString("gender"+i, "Мужской");
+                    editor6.apply();
+
+                    // вид животного
+                    SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefAnimal"+i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor7 = sharedPreferences7.edit();
+                    editor7.putString("animal"+i, "Нет вида");
+                    editor7.apply();
+
+                    Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
         }
     }
-
 
 
     private void saveNameWomen(String name) {

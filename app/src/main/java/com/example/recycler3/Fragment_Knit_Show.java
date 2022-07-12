@@ -13,6 +13,7 @@ import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.recycler3.databinding.FragmentKnitShowBinding;
 
@@ -23,6 +24,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
     private int id = 0;
     private int showCount = 0;
     private int infoCount = 0;
+    private int childCount = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,9 +36,90 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         show(); // метод показать сохранные данные по айди
         hide(); // метод скрыть данные разделов при загрузке
         initClicker();
+        loadChild(); // метод подгрузки детенышей
+        hide5(); // скрыть раздел с детенышами
+        noEditText(); // отключаем поля ЕдитТекст в режиме просмотра
+
         b.layoutEdit.setVisibility(View.VISIBLE);
 
         return v;
+    }
+
+    // отключаем поля едит текста
+    private void noEditText() {
+        // Раздел Вязка
+
+        // Первый день
+        b.day1.setEnabled(false);
+        b.mount1.setEnabled(false);
+        b.age1.setEnabled(false);
+
+        // Второй день
+        b.day2.setEnabled(false);
+        b.mount2.setEnabled(false);
+        b.age2.setEnabled(false);
+
+        // Третий день
+        b.day3.setEnabled(false);
+        b.mount3.setEnabled(false);
+        b.age3.setEnabled(false);
+
+        // Четвертый день
+        b.day4.setEnabled(false);
+        b.mount4.setEnabled(false);
+        b.age4.setEnabled(false);
+
+        // Пятый день
+        b.day5.setEnabled(false);
+        b.mount5.setEnabled(false);
+        b.age5.setEnabled(false);
+
+        // Раздел Иная информация
+        // отключаем Результаты узи
+        b.editText18.setEnabled(false);
+
+        // Отключаем показания температуры
+        b.temp1.setEnabled(false);
+        b.temp2.setEnabled(false);
+        b.temp3.setEnabled(false);
+        b.temp4.setEnabled(false);
+        b.temp5.setEnabled(false);
+        b.temp6.setEnabled(false);
+
+        // Отключаем дату рождения детеныша
+        b.day6.setEnabled(false);
+        b.mount6.setEnabled(false);
+        b.age6.setEnabled(false);
+
+        // Отключаем примечание
+        b.poleNote3.setEnabled(false);
+    }
+
+    private void loadChild() {
+        loadChildMetod("prefChildName11", "childName11", "prefChildGender11", "childGender11", "prefChildData11", "childData11", b.nameChild1, b.genderChild1, b.gataChild1);
+        loadChildMetod("prefChildName21", "childName21", "prefChildGender21", "childGender21", "prefChildData21", "childData21", b.nameChild2, b.genderChild2, b.gataChild2);
+        loadChildMetod("prefChildName31", "childName31", "prefChildGender31", "childGender31", "prefChildData31", "childData31", b.nameChild3, b.genderChild3, b.gataChild3);
+        loadChildMetod("prefChildName41", "childName41", "prefChildGender41", "childGender41", "prefChildData41", "childData41", b.nameChild4, b.genderChild4, b.gataChild4);
+        loadChildMetod("prefChildName51", "childName51", "prefChildGender51", "childGender51", "prefChildData51", "childData51", b.nameChild5, b.genderChild5, b.gataChild5);
+    }
+
+    private void loadChildMetod(String prefName, String keyname, String prefGender, String keyGender, String prefData, String keyData, TextView name, TextView gender, TextView data) {
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        name.setText(sharedPreferences1.getString(keyname, ""));
+
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences(prefGender, Context.MODE_PRIVATE);
+        gender.setText(sharedPreferences2.getString(keyGender, ""));
+
+        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences(prefData, Context.MODE_PRIVATE);
+        data.setText(sharedPreferences3.getString(keyData, ""));
+    }
+
+    private void hide5() {
+        b.layoutChild1.setVisibility(View.GONE);
+        b.layoutChild2.setVisibility(View.GONE);
+        b.layoutChild3.setVisibility(View.GONE);
+        b.layoutChild4.setVisibility(View.GONE);
+        b.layoutChild5.setVisibility(View.GONE);
     }
 
     private void initClicker() {
@@ -53,6 +136,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.layoutSetTextKnitting.setOnClickListener(this); // кнопка установить напоминание
         b.linearLayout5.setOnClickListener(this); // кнопка добавить детеныша ( перейти на добавить питомца )
         b.layoutSave.setOnClickListener(this); // кнопка сохранить запись
+        b.layoutChild.setOnClickListener(this); // кнопка раздела детеныши
     }
 
     private void hide() {
@@ -326,60 +410,136 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
             case R.id.layoutMinus:
                 showInfo();
                 break;
+
+            case R.id.layoutChild:
+                showChild();
+                break;
         }
     }
 
-    private void showInfo(){
-        if(infoCount == 0){
+    private void showChild() {
+
+
+        if (childCount == 0) {
+            b.imageChild.setVisibility(View.GONE);
+            b.imageChild1.setVisibility(View.VISIBLE);
+            if (!b.nameChild1.getText().toString().equals("")) {
+                b.layoutChild1.setVisibility(View.VISIBLE);
+                b.nameChild1.setVisibility(View.VISIBLE);
+                b.genderChild1.setVisibility(View.VISIBLE);
+                b.gataChild1.setVisibility(View.VISIBLE);
+            }
+            if (!b.nameChild2.getText().toString().equals("")) {
+                b.layoutChild2.setVisibility(View.VISIBLE);
+                b.nameChild2.setVisibility(View.VISIBLE);
+                b.genderChild2.setVisibility(View.VISIBLE);
+                b.gataChild2.setVisibility(View.VISIBLE);
+            }
+            if (!b.nameChild3.getText().toString().equals("")) {
+                b.layoutChild3.setVisibility(View.VISIBLE);
+                b.nameChild3.setVisibility(View.VISIBLE);
+                b.genderChild3.setVisibility(View.VISIBLE);
+                b.gataChild3.setVisibility(View.VISIBLE);
+            }
+            if (!b.nameChild4.getText().toString().equals("")) {
+                b.layoutChild4.setVisibility(View.VISIBLE);
+                b.nameChild4.setVisibility(View.VISIBLE);
+                b.genderChild4.setVisibility(View.VISIBLE);
+                b.gataChild4.setVisibility(View.VISIBLE);
+            }
+            if (!b.nameChild5.getText().toString().equals("")) {
+                b.layoutChild5.setVisibility(View.VISIBLE);
+                b.nameChild5.setVisibility(View.VISIBLE);
+                b.genderChild5.setVisibility(View.VISIBLE);
+                b.gataChild5.setVisibility(View.VISIBLE);
+            }
+            childCount = 1;
+        } else if (childCount == 1) {
+            b.imageChild.setVisibility(View.VISIBLE);
+            b.imageChild1.setVisibility(View.GONE);
+
+            b.layoutChild1.setVisibility(View.GONE);
+            b.nameChild1.setVisibility(View.GONE);
+            b.genderChild1.setVisibility(View.GONE);
+            b.gataChild1.setVisibility(View.GONE);
+
+            b.layoutChild2.setVisibility(View.GONE);
+            b.nameChild2.setVisibility(View.GONE);
+            b.genderChild2.setVisibility(View.GONE);
+            b.gataChild2.setVisibility(View.GONE);
+
+            b.layoutChild3.setVisibility(View.GONE);
+            b.nameChild3.setVisibility(View.GONE);
+            b.genderChild3.setVisibility(View.GONE);
+            b.gataChild3.setVisibility(View.GONE);
+
+            b.layoutChild4.setVisibility(View.GONE);
+            b.nameChild4.setVisibility(View.GONE);
+            b.genderChild4.setVisibility(View.GONE);
+            b.gataChild4.setVisibility(View.GONE);
+
+            b.layoutChild5.setVisibility(View.GONE);
+            b.nameChild5.setVisibility(View.GONE);
+            b.genderChild5.setVisibility(View.GONE);
+            b.gataChild5.setVisibility(View.GONE);
+
+            childCount = 0;
+        }
+    }
+
+    private void showInfo() {
+        if (infoCount == 0) {
             infoCount = 1;
-            if(!b.editText18.getText().toString().equals("")){
+            b.btnShowParams.setVisibility(View.GONE);
+            b.btnShowParams1.setVisibility(View.VISIBLE);
+            if (!b.editText18.getText().toString().equals("")) {
                 b.editText18.setVisibility(View.VISIBLE);
                 b.textView45.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp1.getText().toString().equals("")){
+            if (!b.temp1.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp1.setVisibility(View.VISIBLE);
                 b.temp1.setVisibility(View.VISIBLE);
                 b.simvol1.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp2.getText().toString().equals("")){
+            if (!b.temp2.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp2.setVisibility(View.VISIBLE);
                 b.temp2.setVisibility(View.VISIBLE);
                 b.simvol2.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp3.getText().toString().equals("")){
+            if (!b.temp3.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp3.setVisibility(View.VISIBLE);
                 b.temp3.setVisibility(View.VISIBLE);
                 b.simvol3.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp4.getText().toString().equals("")){
+            if (!b.temp4.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp4.setVisibility(View.VISIBLE);
                 b.temp4.setVisibility(View.VISIBLE);
                 b.simvol4.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp5.getText().toString().equals("")){
+            if (!b.temp5.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp5.setVisibility(View.VISIBLE);
                 b.temp5.setVisibility(View.VISIBLE);
                 b.simvol5.setVisibility(View.VISIBLE);
             }
 
-            if(!b.temp6.getText().toString().equals("")){
+            if (!b.temp6.getText().toString().equals("")) {
                 b.textView46.setVisibility(View.VISIBLE);
                 b.layoutTemp6.setVisibility(View.VISIBLE);
                 b.temp6.setVisibility(View.VISIBLE);
                 b.simvol6.setVisibility(View.VISIBLE);
             }
 
-            if(!b.day6.getText().toString().equals("")){
+            if (!b.day6.getText().toString().equals("")) {
                 b.textView44.setVisibility(View.VISIBLE);
                 b.linearLayout16.setVisibility(View.VISIBLE);
                 b.day6.setVisibility(View.VISIBLE);
@@ -387,67 +547,71 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age6.setVisibility(View.VISIBLE);
             }
 
-            if(!b.poleNote3.getText().toString().equals("")){
+            if (!b.poleNote3.getText().toString().equals("")) {
                 b.textView47.setVisibility(View.VISIBLE);
                 b.imageView3.setVisibility(View.VISIBLE);
                 b.poleNote3.setVisibility(View.VISIBLE);
 
             }
-        } else if (infoCount == 1){
+        } else if (infoCount == 1) {
             hideInfo();
+            b.btnShowParams.setVisibility(View.VISIBLE);
+            b.btnShowParams1.setVisibility(View.GONE);
         }
     }
 
-    private void hideInfo(){
+    private void hideInfo() {
         infoCount = 0;
-            b.editText18.setVisibility(View.GONE);
-            b.textView45.setVisibility(View.GONE);
+        b.editText18.setVisibility(View.GONE);
+        b.textView45.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp1.setVisibility(View.GONE);
-            b.temp1.setVisibility(View.GONE);
-            b.simvol1.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp1.setVisibility(View.GONE);
+        b.temp1.setVisibility(View.GONE);
+        b.simvol1.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp2.setVisibility(View.GONE);
-            b.temp2.setVisibility(View.GONE);
-            b.simvol2.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp2.setVisibility(View.GONE);
+        b.temp2.setVisibility(View.GONE);
+        b.simvol2.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp3.setVisibility(View.GONE);
-            b.temp3.setVisibility(View.GONE);
-            b.simvol3.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp3.setVisibility(View.GONE);
+        b.temp3.setVisibility(View.GONE);
+        b.simvol3.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp4.setVisibility(View.GONE);
-            b.temp4.setVisibility(View.GONE);
-            b.simvol4.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp4.setVisibility(View.GONE);
+        b.temp4.setVisibility(View.GONE);
+        b.simvol4.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp5.setVisibility(View.GONE);
-            b.temp5.setVisibility(View.GONE);
-            b.simvol5.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp5.setVisibility(View.GONE);
+        b.temp5.setVisibility(View.GONE);
+        b.simvol5.setVisibility(View.GONE);
 
-            b.textView46.setVisibility(View.GONE);
-            b.layoutTemp6.setVisibility(View.GONE);
-            b.temp6.setVisibility(View.GONE);
-            b.simvol6.setVisibility(View.GONE);
+        b.textView46.setVisibility(View.GONE);
+        b.layoutTemp6.setVisibility(View.GONE);
+        b.temp6.setVisibility(View.GONE);
+        b.simvol6.setVisibility(View.GONE);
 
-            b.textView44.setVisibility(View.GONE);
-            b.linearLayout16.setVisibility(View.GONE);
-            b.day6.setVisibility(View.GONE);
-            b.mount6.setVisibility(View.GONE);
-            b.age6.setVisibility(View.GONE);
+        b.textView44.setVisibility(View.GONE);
+        b.linearLayout16.setVisibility(View.GONE);
+        b.day6.setVisibility(View.GONE);
+        b.mount6.setVisibility(View.GONE);
+        b.age6.setVisibility(View.GONE);
 
-            b.textView47.setVisibility(View.GONE);
-            b.imageView3.setVisibility(View.GONE);
-            b.poleNote3.setVisibility(View.GONE);
+        b.textView47.setVisibility(View.GONE);
+        b.imageView3.setVisibility(View.GONE);
+        b.poleNote3.setVisibility(View.GONE);
     }
 
     private void showKnit() {
         if (showCount == 0) {
             showCount = 1;
-            if (!b.text1.getText().toString().equals("")) {
+            b.btnShowParams2.setVisibility(View.GONE);
+            b.btnShowParams22.setVisibility(View.VISIBLE);
+            if (!b.day1.getText().toString().equals("")) {
                 b.text1.setVisibility(View.VISIBLE);
                 b.layoutKn1.setVisibility(View.VISIBLE);
                 b.day1.setVisibility(View.VISIBLE);
@@ -455,7 +619,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age1.setVisibility(View.VISIBLE);
             }
 
-            if (!b.text2.getText().toString().equals("")) {
+            if (!b.day2.getText().toString().equals("")) {
                 b.text2.setVisibility(View.VISIBLE);
                 b.layoutKn2.setVisibility(View.VISIBLE);
                 b.day2.setVisibility(View.VISIBLE);
@@ -463,7 +627,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age2.setVisibility(View.VISIBLE);
             }
 
-            if (!b.text3.getText().toString().equals("")) {
+            if (!b.day3.getText().toString().equals("")) {
                 b.text3.setVisibility(View.VISIBLE);
                 b.layoutKn3.setVisibility(View.VISIBLE);
                 b.day3.setVisibility(View.VISIBLE);
@@ -471,7 +635,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age3.setVisibility(View.VISIBLE);
             }
 
-            if (!b.text4.getText().toString().equals("")) {
+            if (!b.day4.getText().toString().equals("")) {
                 b.text4.setVisibility(View.VISIBLE);
                 b.layoutKn4.setVisibility(View.VISIBLE);
                 b.day4.setVisibility(View.VISIBLE);
@@ -479,7 +643,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age4.setVisibility(View.VISIBLE);
             }
 
-            if (!b.text5.getText().toString().equals("")) {
+            if (!b.day5.getText().toString().equals("")) {
                 b.text5.setVisibility(View.VISIBLE);
                 b.layoutKn5.setVisibility(View.VISIBLE);
                 b.day5.setVisibility(View.VISIBLE);
@@ -488,6 +652,8 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
             }
         } else if (showCount == 1) {
             hideKnit();
+            b.btnShowParams2.setVisibility(View.VISIBLE);
+            b.btnShowParams22.setVisibility(View.GONE);
         }
     }
 
