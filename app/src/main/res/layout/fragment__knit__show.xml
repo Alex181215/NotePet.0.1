@@ -152,10 +152,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -169,10 +168,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -186,10 +184,9 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -223,10 +220,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -240,10 +236,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -257,10 +252,9 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -294,10 +288,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -311,10 +304,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -328,10 +320,9 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -365,10 +356,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -382,10 +372,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -399,10 +388,9 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -436,10 +424,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -453,10 +440,9 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -470,10 +456,9 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
                     android:backgroundTint="@color/transparent"
-                    />
+                    android:ems="10"
+                    android:inputType="number" />
 
                 <TextView
                     style="@style/StyleText"
@@ -631,11 +616,11 @@
                     android:id="@+id/temp1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -663,11 +648,11 @@
                     android:id="@+id/temp2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -695,11 +680,11 @@
                     android:id="@+id/temp3"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -727,11 +712,11 @@
                     android:id="@+id/temp4"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:backgroundTint="@color/transparent"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
@@ -759,12 +744,12 @@
                     android:id="@+id/temp5"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
                     android:textAlignment="center"
-                    android:backgroundTint="@color/transparent"
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
 
@@ -791,13 +776,13 @@
                     android:id="@+id/temp6"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/transparent"
                     android:ems="10"
                     android:fontFamily="@font/roboto"
                     android:inputType="number"
                     android:maxLength="3"
                     android:textAlignment="center"
                     android:textColor="@color/grey"
-                    android:backgroundTint="@color/transparent"
                     android:textSize="15sp" />
 
                 <TextView
@@ -889,8 +874,8 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:backgroundTint="@color/transparent"
+                    android:ems="10"
                     android:inputType="number" />
 
                 <TextView
@@ -905,8 +890,8 @@
                     style="@style/StyleNumberDayMount"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:backgroundTint="@color/transparent"
+                    android:ems="10"
                     android:inputType="number" />
 
                 <TextView
@@ -921,8 +906,8 @@
                     style="@style/StyleNumberAge"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:backgroundTint="@color/transparent"
+                    android:ems="10"
                     android:inputType="number" />
 
                 <TextView
@@ -1049,9 +1034,9 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/minus"
-                    android:visibility="gone"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -1060,7 +1045,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toEndOf="@id/imageView13"
@@ -1133,8 +1118,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=""
-                    />
+                    android:text="" />
 
             </LinearLayout>
 
@@ -1267,7 +1251,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="horizontal"
                 android:visibility="visible"
@@ -1328,11 +1312,13 @@
                 app:layout_constraintTop_toBottomOf="@id/layoutSetTextKnitting">
 
                 <ImageView
+                    android:id="@+id/imageSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/choice" />
 
                 <TextView
+                    android:id="@+id/textSave"
                     style="@style/StyleHeaderGreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

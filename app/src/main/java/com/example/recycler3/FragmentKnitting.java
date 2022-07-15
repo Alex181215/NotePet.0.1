@@ -104,49 +104,50 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
             SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefChildName11", Context.MODE_PRIVATE);
             if (!sharedPreferences16.getString("childName11", "").equals("")) {
                 countChild = 1;
-                if(countKnit == 1){
-                    b.child1.setText(countKnit + " вязка"+" 1 детеныш");
-                } else{
-                    b.child1.setText(countKnit + " вязок"+" 1 детеныш");
+                if (countKnit == 1) {
+                    b.child1.setText(countKnit + " вязка" + " 1 детеныш");
+                } else {
+                    b.child1.setText(countKnit + " вязок" + " 1 детеныш");
                 }
             }
 
             SharedPreferences sharedPreferences17 = getActivity().getSharedPreferences("prefChildName21", Context.MODE_PRIVATE);
             if (!sharedPreferences17.getString("childName21", "").equals("")) {
                 countChild = 2;
-                if(countKnit == 1){
-                    b.child1.setText(countKnit + " вязка"+" 2 детеныша");
-                } else{
-                    b.child1.setText(countKnit + " вязок"+" 2 детеныша");
+                if (countKnit == 1) {
+                    b.child1.setText(countKnit + " вязка" + " 2 детеныша");
+                } else {
+                    b.child1.setText(countKnit + " вязок" + " 2 детеныша");
                 }
             }
 
             SharedPreferences sharedPreferences18 = getActivity().getSharedPreferences("prefChildName31", Context.MODE_PRIVATE);
             if (!sharedPreferences18.getString("childName31", "").equals("")) {
                 countChild = 3;
-                if(countKnit == 1){
-                    b.child1.setText(countKnit + " вязка"+" 3 детенышей");
-                } else{
-                    b.child1.setText(countKnit + " вязок"+" 3 детенышей");
+                if (countKnit == 1) {
+                    b.child1.setText(countKnit + " вязка" + " 3 детенышей");
+                } else {
+                    b.child1.setText(countKnit + " вязок" + " 3 детенышей");
                 }
             }
 
             SharedPreferences sharedPreferences19 = getActivity().getSharedPreferences("prefChildName41", Context.MODE_PRIVATE);
             if (!sharedPreferences19.getString("childName41", "").equals("")) {
                 countChild = 4;
-                if(countKnit == 1){
-                    b.child1.setText(countKnit + " вязка"+" 4 детенышей");
-                } else{
-                    b.child1.setText(countKnit + " вязок"+" 4 детенышей");
-                }            }
+                if (countKnit == 1) {
+                    b.child1.setText(countKnit + " вязка" + " 4 детенышей");
+                } else {
+                    b.child1.setText(countKnit + " вязок" + " 4 детенышей");
+                }
+            }
 
             SharedPreferences sharedPreferences20 = getActivity().getSharedPreferences("prefChildName51", Context.MODE_PRIVATE);
             if (!sharedPreferences20.getString("childName51", "").equals("")) {
                 countChild = 5;
-                if(countKnit == 1){
-                    b.child1.setText(countKnit + " вязка"+" 5 детенышей");
-                } else{
-                    b.child1.setText(countKnit + " вязок"+" 5 детенышей");
+                if (countKnit == 1) {
+                    b.child1.setText(countKnit + " вязка" + " 5 детенышей");
+                } else {
+                    b.child1.setText(countKnit + " вязок" + " 5 детенышей");
                 }
             }
         }
@@ -489,16 +490,35 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
     private void clicker() {
         b.btnSetPetKnitting.setOnClickListener(this);
         b.imageSetPetKnitting.setOnClickListener(this);
-        b.layout1.setOnClickListener(this);
-        b.layout2.setOnClickListener(this);
-        b.layout3.setOnClickListener(this);
-        b.layout4.setOnClickListener(this);
-        b.layout5.setOnClickListener(this);
-        b.layout6.setOnClickListener(this);
-        b.layout7.setOnClickListener(this);
-        b.layout8.setOnClickListener(this);
-        b.layout9.setOnClickListener(this);
-        b.layout10.setOnClickListener(this);
+        b.ava1.setOnClickListener(this);
+        b.ava2.setOnClickListener(this);
+        b.ava4.setOnClickListener(this);
+        b.ava5.setOnClickListener(this);
+        b.ava6.setOnClickListener(this);
+        b.ava7.setOnClickListener(this);
+        b.ava8.setOnClickListener(this);
+        b.ava9.setOnClickListener(this);
+        b.ava10.setOnClickListener(this);
+        b.shape1.setOnClickListener(this);
+        b.shape2.setOnClickListener(this);
+        b.shape3.setOnClickListener(this);
+        b.shape4.setOnClickListener(this);
+        b.shape5.setOnClickListener(this);
+        b.shape6.setOnClickListener(this);
+        b.shape7.setOnClickListener(this);
+        b.shape8.setOnClickListener(this);
+        b.shape9.setOnClickListener(this);
+        b.shape10.setOnClickListener(this);
+        b.edit1.setOnClickListener(this);
+        b.edit2.setOnClickListener(this);
+        b.edit3.setOnClickListener(this);
+        b.edit4.setOnClickListener(this);
+        b.edit5.setOnClickListener(this);
+        b.edit6.setOnClickListener(this);
+        b.edit7.setOnClickListener(this);
+        b.edit8.setOnClickListener(this);
+        b.edit9.setOnClickListener(this);
+        b.edit10.setOnClickListener(this);
     }
 
     @Override
@@ -510,35 +530,95 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
             case R.id.imageSetPetKnitting:
                 callback.onCreatFragment("knitting");
                 break;
-            case R.id.layout1:
+            case R.id.ava1:
                 callback.onButtonClicked("knittinglayout", 1);
                 break;
-            case R.id.layout2:
+            case R.id.ava2:
                 callback.onButtonClicked("knittinglayout", 2);
                 break;
-            case R.id.layout3:
+            case R.id.ava3:
                 callback.onButtonClicked("knittinglayout", 3);
                 break;
-            case R.id.layout4:
+            case R.id.ava4:
                 callback.onButtonClicked("knittinglayout", 4);
                 break;
-            case R.id.layout5:
+            case R.id.ava5:
                 callback.onButtonClicked("knittinglayout", 5);
                 break;
-            case R.id.layout6:
+            case R.id.ava6:
                 callback.onButtonClicked("knittinglayout", 6);
                 break;
-            case R.id.layout7:
+            case R.id.ava7:
                 callback.onButtonClicked("knittinglayout", 7);
                 break;
-            case R.id.layout8:
+            case R.id.ava8:
                 callback.onButtonClicked("knittinglayout", 8);
                 break;
-            case R.id.layout9:
+            case R.id.ava9:
                 callback.onButtonClicked("knittinglayout", 9);
                 break;
-            case R.id.layout10:
+            case R.id.ava10:
                 callback.onButtonClicked("knittinglayout", 10);
+                break;
+            case R.id.shape1:
+                callback.onButtonClicked("knittinglayout", 1);
+                break;
+            case R.id.shape2:
+                callback.onButtonClicked("knittinglayout", 2);
+                break;
+            case R.id.shape3:
+                callback.onButtonClicked("knittinglayout", 3);
+                break;
+            case R.id.shape4:
+                callback.onButtonClicked("knittinglayout", 4);
+                break;
+            case R.id.shape5:
+                callback.onButtonClicked("knittinglayout", 5);
+                break;
+            case R.id.shape6:
+                callback.onButtonClicked("knittinglayout", 6);
+                break;
+            case R.id.shape7:
+                callback.onButtonClicked("knittinglayout", 7);
+                break;
+            case R.id.shape8:
+                callback.onButtonClicked("knittinglayout", 8);
+                break;
+            case R.id.shape9:
+                callback.onButtonClicked("knittinglayout", 9);
+                break;
+            case R.id.shape10:
+                callback.onButtonClicked("knittinglayout", 10);
+                break;
+            case R.id.edit1:
+                callback.onButtonClicked3("knittingEdit", 1, "edit");
+                break;
+            case R.id.edit2:
+                callback.onButtonClicked3("knittingEdit", 2, "edit");
+                break;
+            case R.id.edit3:
+                callback.onButtonClicked3("knittingEdit", 3, "edit");
+                break;
+            case R.id.edit4:
+                callback.onButtonClicked3("knittingEdit", 4, "edit");
+                break;
+            case R.id.edit5:
+                callback.onButtonClicked3("knittingEdit", 5, "edit");
+                break;
+            case R.id.edit6:
+                callback.onButtonClicked3("knittingEdit", 6, "edit");
+                break;
+            case R.id.edit7:
+                callback.onButtonClicked3("knittingEdit", 7, "edit");
+                break;
+            case R.id.edit8:
+                callback.onButtonClicked3("knittingEdit", 8, "edit");
+                break;
+            case R.id.edit9:
+                callback.onButtonClicked3("knittingEdit", 9, "edit");
+                break;
+            case R.id.edit10:
+                callback.onButtonClicked3("knittingEdit", 10, "edit");
                 break;
         }
 

@@ -4,6 +4,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,17 +15,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.recycler3.databinding.FragmentKnitShowBinding;
 
 import java.util.Calendar;
 
 public class Fragment_Knit_Show extends Fragment implements View.OnClickListener {
+    private SampleCallback callback;
     private FragmentKnitShowBinding b;
     private int id = 0;
     private int showCount = 0;
     private int infoCount = 0;
     private int childCount = 0;
+    private boolean edit = false; // по умолчанию едит выключен
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof SampleCallback) {
+            callback = (SampleCallback) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement SampleCallback");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback = null;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,16 +54,118 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         View v = b.getRoot();
 
         loadId(); // получить айди
-        show(); // метод показать сохранные данные по айди
+        show(); // метод подгрузить сохраненные данные по айди
+        initClicker(); // инициализация слушателей
+        if(edit == false){
+            showAll();
+        } else if(edit == true){
+            b.layoutEdit.setVisibility(View.GONE);
+            yesEditText();
+        }
         hide(); // метод скрыть данные разделов при загрузке
-        initClicker();
         loadChild(); // метод подгрузки детенышей
         hide5(); // скрыть раздел с детенышами
-        noEditText(); // отключаем поля ЕдитТекст в режиме просмотра
-
-        b.layoutEdit.setVisibility(View.VISIBLE);
 
         return v;
+    }
+
+    private void showAll() {
+        zonaShow();
+        noEditText();
+    }
+
+    // метод скрыть лишние кнопки
+    private void zonaShow() {
+        // скрыть кнопку установить напоминание
+        b.layoutSetTextKnitting.setVisibility(View.GONE);
+
+        // скрыть кнопку сохранить
+        b.layoutSave.setVisibility(View.GONE);
+    }
+
+    private void yesEditText(){
+        // Раздел Вязка
+
+        // Первый день
+        b.day1.setEnabled(true);
+        b.mount1.setEnabled(true);
+        b.age1.setEnabled(true);
+
+        // Второй день
+        b.day2.setEnabled(true);
+        b.mount2.setEnabled(true);
+        b.age2.setEnabled(true);
+
+        // Третий день
+        b.day3.setEnabled(true);
+        b.mount3.setEnabled(true);
+        b.age3.setEnabled(true);
+
+        // Четвертый день
+        b.day4.setEnabled(true);
+        b.mount4.setEnabled(true);
+        b.age4.setEnabled(true);
+
+        // Пятый день
+        b.day5.setEnabled(true);
+        b.mount5.setEnabled(true);
+        b.age5.setEnabled(true);
+
+        // Раздел Иная информация
+        // отключаем Результаты узи
+        b.editText18.setEnabled(true);
+
+        // Отключаем показания температуры
+        b.temp1.setEnabled(true);
+        b.temp2.setEnabled(true);
+        b.temp3.setEnabled(true);
+        b.temp4.setEnabled(true);
+        b.temp5.setEnabled(true);
+        b.temp6.setEnabled(true);
+
+        // Отключаем дату рождения детеныша
+        b.day6.setEnabled(true);
+        b.mount6.setEnabled(true);
+        b.age6.setEnabled(true);
+
+        // Отключаем примечание
+        b.poleNote3.setEnabled(true);
+
+        // метод поставить полям едит текста зеленный цвет
+        b.day1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.day2.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount2.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age2.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.day3.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount3.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age3.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.day4.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount4.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age4.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.day5.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount5.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age5.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.editText18.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.temp1.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.temp2.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.temp3.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.temp4.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.temp5.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.temp6.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.day6.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.mount6.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+        b.age6.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+
+        b.age6.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
     }
 
     // отключаем поля едит текста
@@ -137,10 +260,11 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.linearLayout5.setOnClickListener(this); // кнопка добавить детеныша ( перейти на добавить питомца )
         b.layoutSave.setOnClickListener(this); // кнопка сохранить запись
         b.layoutChild.setOnClickListener(this); // кнопка раздела детеныши
+        b.layoutEdit.setOnClickListener(this); // кнопка редактировать раздел
     }
 
+    // метод скрыть данные разделов при загрузке
     private void hide() {
-
         // раздел Вязка
         // скрыть дата первой вязки
         b.text1.setVisibility(View.GONE);
@@ -163,7 +287,6 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.mount3.setVisibility(View.GONE);
         b.age3.setVisibility(View.GONE);
 
-
         // скрыть дата четвертой вязки
         b.text4.setVisibility(View.GONE);
         b.layoutKn4.setVisibility(View.GONE);
@@ -178,12 +301,8 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.mount5.setVisibility(View.GONE);
         b.age5.setVisibility(View.GONE);
 
-        // скрыть кнопку добавить вязку
-        b.layout555.setVisibility(View.GONE);
-
         // скрыть кнопку удалить вязку
         b.layout666.setVisibility(View.GONE);
-
 
         // Раздел Иная информация
         // скрыть заголовок результат узи
@@ -201,9 +320,6 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.layoutTemp4.setVisibility(View.GONE);
         b.layoutTemp5.setVisibility(View.GONE);
         b.layoutTemp6.setVisibility(View.GONE);
-
-        // скрыть кнопку добавить температуру
-        b.layoutAddTemp.setVisibility(View.GONE);
 
         // скрыть кнопку удалить температуру
         b.layoutAddTemp2.setVisibility(View.GONE);
@@ -223,6 +339,12 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         // скрыть шейп примечание
         b.imageView3.setVisibility(View.GONE);
 
+        // скрыть кнопку добавить вязку
+        b.layout555.setVisibility(View.GONE);
+
+        // скрыть кнопку добавить температуру
+        b.layoutAddTemp.setVisibility(View.GONE);
+
         // скрыть кнопку добавит фото
         b.imageView12.setVisibility(View.GONE);
         b.textView10.setVisibility(View.GONE);
@@ -231,14 +353,8 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.imageView13.setVisibility(View.GONE);
         b.textView48.setVisibility(View.GONE);
 
-        // скрыть кнопку установить напоминание
-        b.layoutSetTextKnitting.setVisibility(View.GONE);
-
         // скрыть кнопку добавить детеныша
         b.linearLayout5.setVisibility(View.GONE);
-
-        // скрыть кнопку сохранить
-        b.layoutSave.setVisibility(View.GONE);
     }
 
     // загрузить сохранные данные по полученному айди
@@ -392,7 +508,11 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
             String i = this.getArguments().getString("key");
             id = Integer.parseInt(i);
         }
+        if (this.getArguments().getString("edit").equals("edit")) {
+            edit = true;
+        }
     }
+
 
     @Override
     public void onClick(View v) {
@@ -414,12 +534,39 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
             case R.id.layoutChild:
                 showChild();
                 break;
+
+            case R.id.layoutEdit:
+                callback.onButtonClicked3("knittingEdit", id, "edit");
+                break;
+
+                // слушатель на кнопку добавить вязку
+            case R.id.layout555:
+
+                break;
+
+                // слушатель на кнопку удалить вязку
+            case R.id.layout666:
+
+                break;
+
+                // слушатель на кнопку добавить температуру
+            case R.id.layoutAddTemp:
+
+                break;
+
+                // слушатель на кнопку удалит температуру
+            case R.id.layoutAddTemp2:
+
+                break;
+
+                // слушатель на кнопку добавить детеныша
+            case R.id.linearLayout5:
+
+                break;
         }
     }
 
     private void showChild() {
-
-
         if (childCount == 0) {
             b.imageChild.setVisibility(View.GONE);
             b.imageChild1.setVisibility(View.VISIBLE);
@@ -453,6 +600,10 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.genderChild5.setVisibility(View.VISIBLE);
                 b.gataChild5.setVisibility(View.VISIBLE);
             }
+            if(edit == true){
+                b.linearLayout5.setVisibility(View.VISIBLE);
+            }
+
             childCount = 1;
         } else if (childCount == 1) {
             b.imageChild.setVisibility(View.VISIBLE);
@@ -482,6 +633,8 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
             b.nameChild5.setVisibility(View.GONE);
             b.genderChild5.setVisibility(View.GONE);
             b.gataChild5.setVisibility(View.GONE);
+
+            b.linearLayout5.setVisibility(View.GONE);
 
             childCount = 0;
         }
@@ -551,12 +704,17 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.textView47.setVisibility(View.VISIBLE);
                 b.imageView3.setVisibility(View.VISIBLE);
                 b.poleNote3.setVisibility(View.VISIBLE);
+            }
 
+            if(edit == true){
+                b.layoutAddTemp.setVisibility(View.VISIBLE);
             }
         } else if (infoCount == 1) {
             hideInfo();
             b.btnShowParams.setVisibility(View.VISIBLE);
             b.btnShowParams1.setVisibility(View.GONE);
+            b.layoutAddTemp.setVisibility(View.GONE);
+            b.layoutAddTemp2.setVisibility(View.GONE);
         }
     }
 
@@ -650,10 +808,16 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.mount5.setVisibility(View.VISIBLE);
                 b.age5.setVisibility(View.VISIBLE);
             }
+
+            if(edit == true){
+                b.layout555.setVisibility(View.VISIBLE);
+            }
         } else if (showCount == 1) {
             hideKnit();
             b.btnShowParams2.setVisibility(View.VISIBLE);
             b.btnShowParams22.setVisibility(View.GONE);
+            b.layout555.setVisibility(View.GONE);
+            b.layout666.setVisibility(View.GONE);
         }
     }
 

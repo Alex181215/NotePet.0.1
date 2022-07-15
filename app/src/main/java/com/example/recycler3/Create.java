@@ -464,6 +464,7 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if (key.equals("knittinglayout")) {
             Bundle bundle = new Bundle();
             bundle.putString("key", position + "");
+            bundle.putString("edit", "no");
 
             Fragment_Knit_Show fragmentKnitShow = new Fragment_Knit_Show();
             fragmentKnitShow.setArguments(bundle);
@@ -507,6 +508,25 @@ public class Create extends AppCompatActivity implements SampleCallback {
         }
 
 
+    }
+
+    @Override
+    public void onButtonClicked3(String key, int position, String edit) {
+        if(key.equals("knittingEdit")){
+            Bundle bundle = new Bundle();
+            bundle.putString("key", position + "");
+            bundle.putString("edit", edit);
+
+            Fragment_Knit_Show fragmentKnitShow = new Fragment_Knit_Show();
+            fragmentKnitShow.setArguments(bundle);
+
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragmentKnitShow).addToBackStack("tag");
+            transaction.commit();
+
+            layotBarMenu();
+            textHeader("Вязка редактирование");
+        }
     }
 
     private void testActiv(int position) {
