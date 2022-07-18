@@ -64,6 +64,13 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
         return (v);
     }
 
+    // подгрузка id
+      private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
+    }
+
     // метод переход по полям дата
     private void data() {
         createMetod.dataAvtomat(b.day1, b.mount1, b.age1, b.hour1);
@@ -595,14 +602,6 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
         b.temp4.setText(temp4);
         b.temp5.setText(temp5);
         b.temp6.setText(temp6);
-    }
-
-    // подгрузка id
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
-        }
     }
 
     // метод перехода на календарь
