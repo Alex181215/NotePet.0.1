@@ -258,6 +258,11 @@ public class FragmentPets extends Fragment implements RecyclerViewClickInterface
             Toast.makeText(getActivity(), "Удалить", Toast.LENGTH_SHORT).show();
             spinnerDel(position);
         } else {
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("activ", ""+position);
+            editor.apply();
+
             callback.onButtonClicked(key, position);
         }
 

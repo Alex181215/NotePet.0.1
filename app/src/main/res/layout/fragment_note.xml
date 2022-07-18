@@ -13,10 +13,10 @@
 
         <ScrollView
             android:id="@+id/layout_scrollView"
-            android:layout_marginEnd="30dp"
-            android:layout_marginStart="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:scrollbarThumbVertical="@android:color/white"
             android:scrollbars="none">
 
@@ -55,9 +55,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/shape_white"
                         android:focusable="true"
+                        android:hint="Введите текст"
                         android:inputType="textMultiLine|text"
                         android:padding="5dp"
-                        android:hint="Введите текст"
                         android:paddingStart="10dp"
                         android:text="" />
                 </LinearLayout>
@@ -67,9 +67,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/note"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -85,9 +85,8 @@
                         style="@style/StyleHeaderGreen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setclock"
                         android:layout_marginEnd="10dp"
-                        />
+                        android:text="@string/setclock" />
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>

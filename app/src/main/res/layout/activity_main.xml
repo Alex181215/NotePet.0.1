@@ -23,15 +23,26 @@
         />
 
     <ImageButton
+        android:id="@+id/imageCreate"
         android:layout_width="66dp"
         android:layout_height="66dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="85dp"
-        android:onClick="start"
         android:background="@drawable/plus" />
 
+    <ImageButton
+        android:id="@+id/imagePets"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="85dp"
+        android:background="@drawable/paw" />
+
     <TextView
+        android:id="@+id/textCreate"
         style="@style/StyleHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,9 +50,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="57dp"
         android:gravity="center"
-        android:textSize="15sp"
-        android:onClick="start"
         android:text="@string/get_pet"
-        />
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textPets"
+        style="@style/StyleHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Мои питомцы"
+        android:textSize="15sp" />
 
 </RelativeLayout>

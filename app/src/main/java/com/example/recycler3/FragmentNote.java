@@ -3,6 +3,7 @@ package com.example.recycler3;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -20,6 +21,7 @@ import java.util.Calendar;
 public class FragmentNote extends Fragment implements View.OnClickListener {
     private FragmentNoteBinding b;
     private SampleCallback callback;
+    private int id = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -41,34 +43,29 @@ public class FragmentNote extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         b = FragmentNoteBinding.inflate(getLayoutInflater());
         View v = b.getRoot();
-        Pref.init(getActivity());
         callback.onCreatFragment("note");
-
-
         callback.onCreatFragment("noteCreate"); // захват фрагмента для смены баров
-        load(); // подгрузка данных из сохраненки
+        id();
+        load();
         initClick(); // инициализация слушателей
-
-        b.buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                callback.onCreatFragment("note");
-            }
-        });
-
-        b.buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
 
         return v;
     }
 
-    private void load() {
-        b.poleNote.setText(Pref.get(Pref.NOTE_HEA));
-        b.poleNote2.setText(Pref.get(Pref.NOTE_TIT));
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
+
+    private void load() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefNote"+id, Context.MODE_PRIVATE);
+        b.poleNote.setText(sharedPreferences.getString("note"+id, ""));
+
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefNoteTitle"+id, Context.MODE_PRIVATE);
+        b.poleNote2.setText(sharedPreferences1.getString("title"+id, ""));
+    }
+
 
     // иницилизация слушателей
     private void initClick() {
@@ -85,21 +82,28 @@ public class FragmentNote extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imageClock:
             case R.id.getClock:
-            case R.id.textClock:
                 intentCalender();
                 break;
 
             case R.id.button_save:
             case R.id.getpetmenu:
             case R.id.getpetmenutext:
-
-                Pref.addStr(Pref.NOTE_HEA, b.poleNote.getText().toString());
-                Pref.addStr(Pref.NOTE_TIT, b.poleNote2.getText().toString());
-
-                Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
+                save();
+                break;
         }
+    }
+
+    private void save() {
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefNote"+id, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        editor1.putString("note"+id, b.poleNote.getText().toString());
+        editor1.apply();
+
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefNoteTitle"+id, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+        editor2.putString("title"+id, b.poleNote2.getText().toString());
+        editor2.apply();
     }
 
     // метод перехода на календарь

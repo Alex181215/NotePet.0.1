@@ -177,8 +177,9 @@ public class FragmentCreate extends Fragment {
         for (int i = 1; i < 100; i++) {
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefName" + i, MODE_PRIVATE);
             if (sharedPreferences.getString("name" + i, "").equals("")) {
+                saveId("prefId"+i, "id"+i, i);
                 saveStatus("prefMyStatus" + i, "myStatus" + i);
-                saveActiv("prefActiv" + i, "activ" + i);
+                saveActiv("prefActiv", "activ",  i);
                 saveData("prefData" + i, "data" + i);
                 saveEditText("prefName" + i, "name" + i, b.edTextName);
                 saveEditText("prefDay" + i, "day" + i, b.edTextDay);
@@ -213,6 +214,13 @@ public class FragmentCreate extends Fragment {
             }
         }
         sendPet();
+    }
+
+    private void saveId(String pref, String key, int id) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(pref, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, ""+id);
+        editor.apply();
     }
 
     // метод для сохранения выбора спинера, выпающего списка ( вида животного )
@@ -254,10 +262,10 @@ public class FragmentCreate extends Fragment {
         editor.apply();
     }
 
-    private void saveActiv(String pref, String key) {
+    private void saveActiv(String pref, String key, int id) {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(pref, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, "Актив");
+        editor.putString(key, ""+id);
         editor.apply();
     }
 
@@ -273,7 +281,7 @@ public class FragmentCreate extends Fragment {
 //            Toast.makeText(getActivity(), "проверка", Toast.LENGTH_SHORT).show();
             SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefChild", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences1.edit();
-            editor.putString("prefChild", "No");
+            editor.putString("child", "No");
             editor.apply();
 
             for (int i = 1; i < 6; i++) {
@@ -302,11 +310,51 @@ public class FragmentCreate extends Fragment {
                 }
             }
             callback.onButtonClicked2("Child", 1, 1);
+        }else if (sharedPreferences.getString("child", "").equals("edit")) {
+            Toast.makeText(getActivity(), "тест пройден", Toast.LENGTH_SHORT).show();
+
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefChild", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences1.edit();
+            editor.putString("child", "No");
+            editor.apply();
+
+            for (int i = 1; i < 6; i++) {
+                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefChildNameKnit" + i, MODE_PRIVATE);
+                if (sharedPreferences2.getString("childNameKnit" + i, "").equals("")) {
+
+                    SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefChildNameKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+                    editor3.putString("childNameKnit" + i, b.edTextName.getText().toString());
+                    editor3.apply();
+
+                    SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefChildGenderKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+                    editor4.putString("childGenderKnit" + i, gender);
+                    editor4.apply();
+
+                    String day = b.edTextDay.getText().toString();
+                    String mount = b.edTextMount.getText().toString();
+                    String age = b.edTextAge.getText().toString();
+
+                    SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefChildDataKnit" + i, MODE_PRIVATE);
+                    SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+                    editor5.putString("childDataKnit" + i, day + " . " + mount + " . " + age);
+                    editor5.apply();
+                    break;
+                }
+            }
+            callback.onButtonClicked3("knittingEdit", 1, "edit");
+        } else if (sharedPreferences.getString("child", "").equals("No")) {
+            FragmentPets pets = new FragmentPets();
+            FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.container, pets);
+            trans.commit();
         } else {
             FragmentPets pets = new FragmentPets();
             FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
             trans.replace(R.id.container, pets);
             trans.commit();
+            callback.onPetVoid();
         }
 
     }
