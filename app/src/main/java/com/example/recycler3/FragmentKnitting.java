@@ -19,6 +19,7 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
     private FragmentKnittingBinding b;
     private int countKnit = 0;
     private int countChild = 0;
+    private int id = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -43,12 +44,18 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
         b = FragmentKnittingBinding.inflate(getLayoutInflater());
         View v = b.getRoot();
         callback.onCreatFragment("FragmentKnitting");
-
+        id();
         hide();
         load();
         clicker();
 
         return v;
+    }
+
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     private void hide() {
@@ -65,44 +72,54 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
     }
 
     private void load() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefKnitWomen1", Context.MODE_PRIVATE);
-        if (!sharedPreferences1.getString("knitWomen1", "").equals("")) {
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefKnitWomen1" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefKnitWomen2" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefKnitWomen3" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefKnitWomen4" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefKnitWomen5" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefKnitWomen6" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefKnitWomen7" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefKnitWomen8" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefKnitWomen9" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefKnitWomen10" + id, Context.MODE_PRIVATE);
+
+        if (!sharedPreferences1.getString("knitWomen1" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout1.setVisibility(View.VISIBLE);
-            b.name1.setText(sharedPreferences1.getString("knitWomen1", ""));
+            b.name1.setText(sharedPreferences1.getString("knitWomen1" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay11", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay11", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay11" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay11" + id, "").equals("")) {
                 countKnit = 1;
                 b.child1.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay21", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay21", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay21" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay21" + id, "").equals("")) {
                 countKnit = 2;
                 b.child1.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay31", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay31", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay31" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay31" + id, "").equals("")) {
                 countKnit = 3;
                 b.child1.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay41", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay41", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay41" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay41" + id, "").equals("")) {
                 countKnit = 4;
                 b.child1.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay51", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay51", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay51" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay51" + id, "").equals("")) {
                 countKnit = 5;
                 b.child1.setText(countKnit + " вязок");
             }
 
-            SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefChildName11", Context.MODE_PRIVATE);
-            if (!sharedPreferences16.getString("childName11", "").equals("")) {
+            SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefChildName11" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences16.getString("childName11" + id, "").equals("")) {
                 countChild = 1;
                 if (countKnit == 1) {
                     b.child1.setText(countKnit + " вязка" + " 1 детеныш");
@@ -111,8 +128,8 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
                 }
             }
 
-            SharedPreferences sharedPreferences17 = getActivity().getSharedPreferences("prefChildName21", Context.MODE_PRIVATE);
-            if (!sharedPreferences17.getString("childName21", "").equals("")) {
+            SharedPreferences sharedPreferences17 = getActivity().getSharedPreferences("prefChildName21" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences17.getString("childName21" + id, "").equals("")) {
                 countChild = 2;
                 if (countKnit == 1) {
                     b.child1.setText(countKnit + " вязка" + " 2 детеныша");
@@ -121,8 +138,8 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
                 }
             }
 
-            SharedPreferences sharedPreferences18 = getActivity().getSharedPreferences("prefChildName31", Context.MODE_PRIVATE);
-            if (!sharedPreferences18.getString("childName31", "").equals("")) {
+            SharedPreferences sharedPreferences18 = getActivity().getSharedPreferences("prefChildName31" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences18.getString("childName31" + id, "").equals("")) {
                 countChild = 3;
                 if (countKnit == 1) {
                     b.child1.setText(countKnit + " вязка" + " 3 детенышей");
@@ -131,8 +148,8 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
                 }
             }
 
-            SharedPreferences sharedPreferences19 = getActivity().getSharedPreferences("prefChildName41", Context.MODE_PRIVATE);
-            if (!sharedPreferences19.getString("childName41", "").equals("")) {
+            SharedPreferences sharedPreferences19 = getActivity().getSharedPreferences("prefChildName41" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences19.getString("childName41" + id, "").equals("")) {
                 countChild = 4;
                 if (countKnit == 1) {
                     b.child1.setText(countKnit + " вязка" + " 4 детенышей");
@@ -141,8 +158,8 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
                 }
             }
 
-            SharedPreferences sharedPreferences20 = getActivity().getSharedPreferences("prefChildName51", Context.MODE_PRIVATE);
-            if (!sharedPreferences20.getString("childName51", "").equals("")) {
+            SharedPreferences sharedPreferences20 = getActivity().getSharedPreferences("prefChildName51" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences20.getString("childName51" + id, "").equals("")) {
                 countChild = 5;
                 if (countKnit == 1) {
                     b.child1.setText(countKnit + " вязка" + " 5 детенышей");
@@ -152,335 +169,326 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
             }
         }
 
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefKnitWomen2", Context.MODE_PRIVATE);
-        if (!sharedPreferences2.getString("knitWomen2", "").equals("")) {
+        if (!sharedPreferences2.getString("knitWomen2" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout2.setVisibility(View.VISIBLE);
-            b.name2.setText(sharedPreferences2.getString("knitWomen2", ""));
+            b.name2.setText(sharedPreferences2.getString("knitWomen2" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay12", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay12", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay12" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay12" + id, "").equals("")) {
                 countKnit = 1;
                 b.child2.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay22", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay22", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay22 + id", Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay22" + id, "").equals("")) {
                 countKnit = 2;
                 b.child2.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay32", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay32", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay32" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay32" + id, "").equals("")) {
                 countKnit = 3;
                 b.child2.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay42", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay42", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay42" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay42" + id, "").equals("")) {
                 countKnit = 4;
                 b.child2.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay52", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay52", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay52" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay52" + id, "").equals("")) {
                 countKnit = 5;
                 b.child2.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefKnitWomen3", Context.MODE_PRIVATE);
-        if (!sharedPreferences3.getString("knitWomen3", "").equals("")) {
+        if (!sharedPreferences3.getString("knitWomen3" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout3.setVisibility(View.VISIBLE);
-            b.name3.setText(sharedPreferences3.getString("knitWomen3", ""));
+            b.name3.setText(sharedPreferences3.getString("knitWomen3" + id, ""));
 
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay13", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay13", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay13" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay13" + id, "").equals("")) {
                 countKnit = 1;
                 b.child3.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay23", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay23", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay23" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay23" + id,  "").equals("")) {
                 countKnit = 2;
                 b.child3.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay33", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay33", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay33" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay33" + id, "").equals("")) {
                 countKnit = 3;
                 b.child3.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay43", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay43", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay43" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay43" + id, "").equals("")) {
                 countKnit = 4;
                 b.child3.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay53", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay53", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay53" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay53" + id, "").equals("")) {
                 countKnit = 5;
                 b.child3.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefKnitWomen4", Context.MODE_PRIVATE);
-        if (!sharedPreferences4.getString("knitWomen4", "").equals("")) {
+        if (!sharedPreferences4.getString("knitWomen4" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout4.setVisibility(View.VISIBLE);
-            b.name4.setText(sharedPreferences4.getString("knitWomen4", ""));
+            b.name4.setText(sharedPreferences4.getString("knitWomen4" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay14", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay14", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay14" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay14" + id, "").equals("")) {
                 countKnit = 1;
                 b.child4.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay24", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay24", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay24" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay24" + id, "").equals("")) {
                 countKnit = 2;
                 b.child4.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay34", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay34", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay34" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay34" + id, "").equals("")) {
                 countKnit = 3;
                 b.child4.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay44", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay44", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay44" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay44" + id, "").equals("")) {
                 countKnit = 4;
                 b.child4.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay54", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay54", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay54" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay54" + id, "").equals("")) {
                 countKnit = 5;
                 b.child4.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefKnitWomen5", Context.MODE_PRIVATE);
-        if (!sharedPreferences5.getString("knitWomen5", "").equals("")) {
+        if (!sharedPreferences5.getString("knitWomen5" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout5.setVisibility(View.VISIBLE);
-            b.name5.setText(sharedPreferences5.getString("knitWomen5", ""));
+            b.name5.setText(sharedPreferences5.getString("knitWomen5" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay15", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay15", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay15" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay15" + id, "").equals("")) {
                 countKnit = 1;
                 b.child5.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay25", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay25", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay25" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay25" + id, "").equals("")) {
                 countKnit = 2;
                 b.child5.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay35", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay35", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay35" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay35" + id, "").equals("")) {
                 countKnit = 3;
                 b.child5.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay45", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay45", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay45" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay45" + id, "").equals("")) {
                 countKnit = 4;
                 b.child5.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay55", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay55", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay55" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay55" + id, "").equals("")) {
                 countKnit = 5;
                 b.child5.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefKnitWomen6", Context.MODE_PRIVATE);
-        if (!sharedPreferences6.getString("knitWomen6", "").equals("")) {
+        if (!sharedPreferences6.getString("knitWomen6" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout6.setVisibility(View.VISIBLE);
-            b.name6.setText(sharedPreferences6.getString("knitWomen6", ""));
+            b.name6.setText(sharedPreferences6.getString("knitWomen6" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay16", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay16", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay16" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay16" + id, "").equals("")) {
                 countKnit = 1;
                 b.child6.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay26", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay26", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay26" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay26" + id, "").equals("")) {
                 countKnit = 2;
                 b.child6.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay36", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay36", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay36" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay36" + id, "").equals("")) {
                 countKnit = 3;
                 b.child6.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay46", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay46", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay46" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay46" + id, "").equals("")) {
                 countKnit = 4;
                 b.child6.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay56", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay56", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay56" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay56" + id, "").equals("")) {
                 countKnit = 5;
                 b.child6.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefKnitWomen7", Context.MODE_PRIVATE);
-        if (!sharedPreferences7.getString("knitWomen7", "").equals("")) {
+        if (!sharedPreferences7.getString("knitWomen7" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout7.setVisibility(View.VISIBLE);
-            b.name7.setText(sharedPreferences7.getString("knitWomen7", ""));
+            b.name7.setText(sharedPreferences7.getString("knitWomen7" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay17", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay17", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay17" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay17" + id, "").equals("")) {
                 countKnit = 1;
                 b.child7.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay27", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay27", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay27" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay27" + id, "").equals("")) {
                 countKnit = 2;
                 b.child7.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay37", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay37", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay37" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay37" + id, "").equals("")) {
                 countKnit = 3;
                 b.child7.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay47", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay47", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay47" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay47" + id, "").equals("")) {
                 countKnit = 4;
                 b.child7.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay57", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay57", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay57" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay57" + id, "").equals("")) {
                 countKnit = 5;
                 b.child7.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefKnitWomen8", Context.MODE_PRIVATE);
-        if (!sharedPreferences8.getString("knitWomen8", "").equals("")) {
+        if (!sharedPreferences8.getString("knitWomen8" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout8.setVisibility(View.VISIBLE);
-            b.name8.setText(sharedPreferences8.getString("knitWomen8", ""));
+            b.name8.setText(sharedPreferences8.getString("knitWomen8" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay18", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay18", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay18" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay18" + id, "").equals("")) {
                 countKnit = 1;
                 b.child8.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay28", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay28", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay28" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay28" + id, "").equals("")) {
                 countKnit = 2;
                 b.child8.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay38", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay38", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay38" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay38" + id, "").equals("")) {
                 countKnit = 3;
                 b.child8.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay48", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay48", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay48" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay48" + id, "").equals("")) {
                 countKnit = 4;
                 b.child8.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay58", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay58", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay58" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay58" + id, "").equals("")) {
                 countKnit = 5;
                 b.child8.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefKnitWomen9", Context.MODE_PRIVATE);
-        if (!sharedPreferences9.getString("knitWomen9", "").equals("")) {
+        if (!sharedPreferences9.getString("knitWomen9" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout9.setVisibility(View.VISIBLE);
-            b.name9.setText(sharedPreferences9.getString("knitWomen9", ""));
+            b.name9.setText(sharedPreferences9.getString("knitWomen9" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay19", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay19", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay19" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay19" + id, "").equals("")) {
                 countKnit = 1;
                 b.child9.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay29", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay29", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay29" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay29" + id, "").equals("")) {
                 countKnit = 2;
                 b.child9.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay39", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay39", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay39" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay39" + id, "").equals("")) {
                 countKnit = 3;
                 b.child9.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay49", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay49", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay49" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay49" + id, "").equals("")) {
                 countKnit = 4;
                 b.child9.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay59", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay59", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay59" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay59" + id , "").equals("")) {
                 countKnit = 5;
                 b.child9.setText(countKnit + " вязок");
             }
         }
 
-        SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefKnitWomen10", Context.MODE_PRIVATE);
-        if (!sharedPreferences10.getString("knitWomen10", "").equals("")) {
+        if (!sharedPreferences10.getString("knitWomen10" + id, "").equals("")) {
             b.textView3.setVisibility(View.GONE);
             b.layout10.setVisibility(View.VISIBLE);
-            b.name10.setText(sharedPreferences10.getString("knitWomen10", ""));
+            b.name10.setText(sharedPreferences10.getString("knitWomen10" + id, ""));
 
-            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay110", Context.MODE_PRIVATE);
-            if (!sharedPreferences11.getString("knitDay110", "").equals("")) {
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefKnitDay110" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences11.getString("knitDay110" + id, "").equals("")) {
                 countKnit = 1;
                 b.child10.setText(countKnit + " вязка");
             }
 
-            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay210", Context.MODE_PRIVATE);
-            if (!sharedPreferences12.getString("knitDay210", "").equals("")) {
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefKnitDay210" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences12.getString("knitDay210" + id, "").equals("")) {
                 countKnit = 2;
                 b.child10.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay310", Context.MODE_PRIVATE);
-            if (!sharedPreferences13.getString("knitDay310", "").equals("")) {
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefKnitDay310" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences13.getString("knitDay310" + id, "").equals("")) {
                 countKnit = 3;
                 b.child10.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay410", Context.MODE_PRIVATE);
-            if (!sharedPreferences14.getString("knitDay410", "").equals("")) {
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefKnitDay410" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences14.getString("knitDay410" + id, "").equals("")) {
                 countKnit = 4;
                 b.child10.setText(countKnit + " вязки");
             }
 
-            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay510", Context.MODE_PRIVATE);
-            if (!sharedPreferences15.getString("knitDay510", "").equals("")) {
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefKnitDay510" + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences15.getString("knitDay510" + id, "").equals("")) {
                 countKnit = 5;
                 b.child10.setText(countKnit + " вязок");
             }
@@ -621,6 +629,5 @@ public class FragmentKnitting extends Fragment implements View.OnClickListener {
                 callback.onButtonClicked3("knittingEdit", 10, "edit");
                 break;
         }
-
     }
 }

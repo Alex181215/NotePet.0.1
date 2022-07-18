@@ -31,6 +31,7 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
     private int id = 0;
     private SampleCallback callback;
     CreateMetod createMetod = new CreateMetod();
+    private int position = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -59,11 +60,27 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
         data(); // авто переход по датам
         hide(); // скрыть разделы из редактирования
         initClick(); // инициализация кнопок
-        id(); // подгрузка айди
-        showSave(); // подругрузка данных из сохраненки по айди
+        id(); // подгрузка айди актуальноо питомца
+        bundle(); // подгрузка позиции
+        load(); // подругрузка данных из сохраненки по айди
 
         return v;
     }
+
+    private void bundle() {
+        if (!this.getArguments().getString("key").equals("")) {
+            String i = this.getArguments().getString("key");
+            position = Integer.parseInt(i);
+        }
+    }
+
+    // подгрузка id
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
+    }
+
     private void data() {
         createMetod.dataAvtomat(b.day, b.editText2, b.age, b.param);
         createMetod.dataAvtomat(b.editText5, b.editText6, b.editText7, b.poleNote2);
@@ -71,41 +88,36 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
     }
 
     // метод подгоузки данных из сохраненки
-    private void showSave() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTreatmentDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTreatmentMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTreatmentAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTreatmentExitDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTreatmentExitMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTreatmentExitAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugTreatment"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteTreatment"+id, Context.MODE_PRIVATE);
+    private void load() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefTreatmentDay" + position + id, Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("treatmentDay" + position + id, "").equals("")) {
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTreatmentDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTreatmentMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTreatmentAge" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTreatmentExitDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTreatmentExitMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTreatmentExitAge" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugTreatment" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteTreatment" + position + id, Context.MODE_PRIVATE);
 
-        String day = sharedPreferences1.getString("treatmentDay"+id, "");
-        String mount = sharedPreferences2.getString("treatmentMount"+id, "");
-        String age = sharedPreferences3.getString("treatmentAge"+id, "");
-        String exitDay = sharedPreferences4.getString("treatmentExitDay"+id, "");
-        String exitMount = sharedPreferences5.getString("treatmentExitMount"+id, "");
-        String exitAge = sharedPreferences6.getString("treatmentExitAge"+id, "");
-        String drug = sharedPreferences7.getString("drugTreatment"+id, "");
-        String note = sharedPreferences8.getString("noteTreatment"+id, "");
+            String day = sharedPreferences1.getString("treatmentDay" + position + id, "");
+            String mount = sharedPreferences2.getString("treatmentMount" + position + id, "");
+            String age = sharedPreferences3.getString("treatmentAge" + position + id, "");
+            String exitDay = sharedPreferences4.getString("treatmentExitDay" + position + id, "");
+            String exitMount = sharedPreferences5.getString("treatmentExitMount" + position + id, "");
+            String exitAge = sharedPreferences6.getString("treatmentExitAge" + position + id, "");
+            String drug = sharedPreferences7.getString("drugTreatment" + position + id, "");
+            String note = sharedPreferences8.getString("noteTreatment" + position + id, "");
 
-        b.day.setText(day);
-        b.editText2.setText(mount);
-        b.age.setText(age);
-        b.param.setText(drug);
-        b.editText5.setText(exitDay);
-        b.editText6.setText(exitMount);
-        b.editText7.setText(exitAge);
-        b.poleNote2.setText(note);
+            b.day.setText(day);
+            b.editText2.setText(mount);
+            b.age.setText(age);
+            b.param.setText(drug);
+            b.editText5.setText(exitDay);
+            b.editText6.setText(exitMount);
+            b.editText7.setText(exitAge);
+            b.poleNote2.setText(note);
 
-    }
-
-    // подгрузка id
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
         }
     }
 
@@ -182,7 +194,7 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
         }
     }
 
-    private void testData(EditText day, EditText mount, EditText age){
+    private void testData(EditText day, EditText mount, EditText age) {
         SimpleDateFormat datD = new SimpleDateFormat("dd");
         String currentDateandD = datD.format(new Date());
         String data1 = ("" + currentDateandD);
@@ -278,7 +290,7 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
                 mount2.requestFocus();
                 setSoftKeyboard();
                 Toast.makeText(getActivity(), "Превышает количество месяцев в году", Toast.LENGTH_SHORT).show();
-            } else if (ageInt2 > currentAge+2) {
+            } else if (ageInt2 > currentAge + 2) {
                 age2.setText("");
                 age2.requestFocus();
                 setSoftKeyboard();
@@ -296,46 +308,46 @@ public class Fragment_Treatment_Show extends Fragment implements View.OnClickLis
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
-    private void save(){
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTreatmentDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTreatmentMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTreatmentAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTreatmentExitDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTreatmentExitMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTreatmentExitAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugTreatment"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteTreatment"+id, Context.MODE_PRIVATE);
+    private void save() {
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTreatmentDay" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTreatmentMount" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTreatmentAge" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTreatmentExitDay" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTreatmentExitMount" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTreatmentExitAge" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugTreatment" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteTreatment" + position + id, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-        editor1.putString("treatmentDay"+id, b.day.getText().toString());
+        editor1.putString("treatmentDay" + position + id, b.day.getText().toString());
         editor1.apply();
 
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-        editor2.putString("treatmentMount"+id, b.editText2.getText().toString());
+        editor2.putString("treatmentMount" + position + id, b.editText2.getText().toString());
         editor2.apply();
 
         SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-        editor3.putString("treatmentAge"+id, b.age.getText().toString());
+        editor3.putString("treatmentAge" + position + id, b.age.getText().toString());
         editor3.apply();
 
         SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-        editor4.putString("treatmentExitDay"+id, b.editText5.getText().toString());
+        editor4.putString("treatmentExitDay" + position + id, b.editText5.getText().toString());
         editor4.apply();
 
         SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-        editor5.putString("treatmentExitMount"+id, b.editText6.getText().toString());
+        editor5.putString("treatmentExitMount" + position + id, b.editText6.getText().toString());
         editor5.apply();
 
         SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-        editor6.putString("treatmentExitAge"+id, b.editText7.getText().toString());
+        editor6.putString("treatmentExitAge" + position + id, b.editText7.getText().toString());
         editor6.apply();
 
         SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-        editor7.putString("drugTreatment"+id, b.param.getText().toString());
+        editor7.putString("drugTreatment" + position + id, b.param.getText().toString());
         editor7.apply();
 
         SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-        editor8.putString("noteTreatment"+id, b.poleNote2.getText().toString());
+        editor8.putString("noteTreatment" + position + id, b.poleNote2.getText().toString());
         editor8.apply();
     }
 

@@ -74,15 +74,12 @@ public class Create extends AppCompatActivity implements SampleCallback {
         popupWindow.showAtLocation(view, Gravity.TOP, 0, 0);
 
         TextView namePet = pop.findViewById(R.id.namePetMenuAction);
-        for (int i = 0; i < 100; i++) {
-            SharedPreferences sharedPreferences = getSharedPreferences("prefActiv" + i, MODE_PRIVATE);
-            SharedPreferences sharedPreferences2 = getSharedPreferences("prefName" + i, MODE_PRIVATE);
-            String name = sharedPreferences.getString("activ" + i, "");
-            if (name.equals("Актив")) {
-                namePet.setText(sharedPreferences2.getString("name" + i, ""));
-                break;
-            }
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences("prefActiv", MODE_PRIVATE);
+        String i = sharedPreferences.getString("activ", "");
+        int id = Integer.parseInt(i);
+
+            SharedPreferences sharedPreferences2 = getSharedPreferences("prefName" + id, MODE_PRIVATE);
+                namePet.setText(sharedPreferences2.getString("name" + id, ""));
 
 
         ImageView imageViewClose1 = pop.findViewById(R.id.imageViewClose1);
@@ -507,6 +504,17 @@ public class Create extends AppCompatActivity implements SampleCallback {
             transaction.commit();
             layotBarMenu();
             textHeader("Вязка");
+        } else if(key.equals("medicalCardlayout2")){
+            Bundle bundle = new Bundle();
+            bundle.putString("key", position + "");
+
+            Fragment_MedicalCart_Show fragmentMedicalCartShow = new Fragment_MedicalCart_Show();
+            fragmentMedicalCartShow.setArguments(bundle);
+
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragmentMedicalCartShow);
+            transaction.commit();
+            layotBarMenu();
         }
     }
 
@@ -749,6 +757,7 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if(key.equals("createChild")){
             FragmentCreate create = new FragmentCreate();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+//            trans.replace(R.id.container, create).addToBackStack("tag");
 //            trans.replace(R.id.container, create).addToBackStack("tag");
             trans.replace(R.id.container, create);
             trans.commit();

@@ -30,6 +30,7 @@ public class FragmentVaccineEdit extends Fragment {
     private FragmentVaccineEditBinding b;
     private SampleCallback callback;
     CreateMetod createMetod = new CreateMetod();
+    private int id = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -54,11 +55,19 @@ public class FragmentVaccineEdit extends Fragment {
         b = FragmentVaccineEditBinding.inflate(getLayoutInflater());
         View v = b.getRoot();
         callback.onCreatFragment("FragmentVaccineEdit");
+        id();
         cliker();
         data();
         enter(b.param, b.editText5);
 
         return v;
+    }
+
+    // получаем айди активного питомца
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     // При нажатии на Enter на кливиатуре убираем фокус и прячем клавиатуру
@@ -233,47 +242,47 @@ public class FragmentVaccineEdit extends Fragment {
                 Toast.makeText(getActivity(), "Превышает текущий год", Toast.LENGTH_SHORT).show();
             } else {
                 for (int i = 1; i < 11; i++) {
-                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefVaccineDay" + i, Context.MODE_PRIVATE);
-                    if (sharedPreferences.getString("vaccineDay" + i, "").equals("")) {
-                        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay" + i, Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefVaccineDay" + i + id, Context.MODE_PRIVATE);
+                    if (sharedPreferences.getString("vaccineDay" + i + id, "").equals("")) {
+                        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-                        editor1.putString("vaccineDay" + i, b.day.getText().toString());
+                        editor1.putString("vaccineDay" + i + id, b.day.getText().toString());
                         editor1.apply();
 
-                        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-                        editor2.putString("vaccineMount" + i, b.editText2.getText().toString());
+                        editor2.putString("vaccineMount" + i + id, b.editText2.getText().toString());
                         editor2.apply();
 
-                        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-                        editor3.putString("vaccineAge" + i, b.age.getText().toString());
+                        editor3.putString("vaccineAge" + i + id, b.age.getText().toString());
                         editor3.apply();
 
 
-                        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-                        editor4.putString("vaccineExitDay" + i, b.editText5.getText().toString());
+                        editor4.putString("vaccineExitDay" + i + id, b.editText5.getText().toString());
                         editor4.apply();
 
-                        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-                        editor5.putString("vaccineExitMount" + i, b.editText6.getText().toString());
+                        editor5.putString("vaccineExitMount" + i + id, b.editText6.getText().toString());
                         editor5.apply();
 
-                        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-                        editor6.putString("vaccineExitAge" + i, b.editText7.getText().toString());
+                        editor6.putString("vaccineExitAge" + i + id, b.editText7.getText().toString());
                         editor6.apply();
 
-                        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-                        editor7.putString("drugVaccine" + i, b.param.getText().toString());
+                        editor7.putString("drugVaccine" + i + id, b.param.getText().toString());
                         editor7.apply();
 
-                        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine" + i, Context.MODE_PRIVATE);
+                        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine" + i + id, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-                        editor8.putString("noteVaccine" + i, b.poleNote2.getText().toString());
+                        editor8.putString("noteVaccine" + i + id, b.poleNote2.getText().toString());
                         editor8.apply();
 
                         // открываем фрагмент мед карта

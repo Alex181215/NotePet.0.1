@@ -28,6 +28,7 @@ public class FragmentTrainingEdit extends Fragment implements View.OnClickListen
     private FragmentTrainingEditBinding b;
     private SampleCallback callback;
     CreateMetod createMetod = new CreateMetod();
+    private int id = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -52,10 +53,18 @@ public class FragmentTrainingEdit extends Fragment implements View.OnClickListen
         b = FragmentTrainingEditBinding.inflate(getLayoutInflater());
         View v = b.getRoot();
         callback.onCreatFragment("FragmentTrainingEdit");
+        id();
         initCliker();
         data();
 
         return v;
+    }
+
+    // получаем айди активного питомца
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     private void data() {
@@ -139,48 +148,48 @@ public class FragmentTrainingEdit extends Fragment implements View.OnClickListen
     private void save() {
         for (int i = 1; i < 11; i++) {
 
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefTrainingDay" + i, Context.MODE_PRIVATE);
-            if (sharedPreferences.getString("trainingDay" + i, "").equals("")) {
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefTrainingDay" + i + id, Context.MODE_PRIVATE);
+            if (sharedPreferences.getString("trainingDay" + i + id, "").equals("")) {
 
-                SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-                editor1.putString("trainingDay" + i, b.day.getText().toString());
+                editor1.putString("trainingDay" + i + id, b.day.getText().toString());
                 editor1.apply();
 
-                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-                editor2.putString("trainingMount" + i, b.mount.getText().toString());
+                editor2.putString("trainingMount" + i + id, b.mount.getText().toString());
                 editor2.apply();
 
 
-                SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingAge" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingAge" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-                editor4.putString("trainingAge" + i, b.age.getText().toString());
+                editor4.putString("trainingAge" + i + id, b.age.getText().toString());
                 editor4.apply();
 
-                SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingName" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingName" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-                editor5.putString("trainingName" + i, b.editText13.getText().toString());
+                editor5.putString("trainingName" + i + id, b.editText13.getText().toString());
                 editor5.apply();
 
-                SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingAdrees" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingAdrees" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-                editor6.putString("trainingAdrees" + i, b.editText14.getText().toString());
+                editor6.putString("trainingAdrees" + i + id, b.editText14.getText().toString());
                 editor6.apply();
 
-                SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingFio" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingFio" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-                editor7.putString("trainingFio" + i, b.editText15.getText().toString());
+                editor7.putString("trainingFio" + i + id, b.editText15.getText().toString());
                 editor7.apply();
 
-                SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingTel" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingTel" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-                editor8.putString("trainingTel" + i, b.tel.getText().toString());
+                editor8.putString("trainingTel" + i + id, b.tel.getText().toString());
                 editor8.apply();
 
-                SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefTrainingNote" + i, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefTrainingNote" + i + id, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor9 = sharedPreferences9.edit();
-                editor9.putString("trainingNote" + i, b.poleNote2.getText().toString());
+                editor9.putString("trainingNote" + i + id, b.poleNote2.getText().toString());
                 editor9.apply();
 
                 callback.onCreatFragment("exhibitionBack");

@@ -28,6 +28,7 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
     private int countEdit = 0;
     private int countSimp = 0;
     private int countTemp = 1;
+    private int position = 0;
     private SampleCallback callback;
     CreateMetod createMetod = new CreateMetod();
 
@@ -57,11 +58,26 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
 
         data(); // автопереход по датам
         id(); // подгрузка айди
+        bundle(); // подгрузка позиции
         load(); // подругрузка данных из сохраненки по айди
         hide(); // режим просморта, убираем все лишнее
         initClicker(); // инициализируем клики
         testTempCount();
         return (v);
+    }
+
+    private void bundle() {
+        if (!this.getArguments().getString("key").equals("")) {
+            String i = this.getArguments().getString("key");
+            position = Integer.parseInt(i);
+        }
+    }
+
+    // подгрузка id
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     // метод переход по полям дата
@@ -270,7 +286,7 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
         }
     }
 
-    private void testTempCount(){
+    private void testTempCount() {
         if (!b.temp1.getText().toString().equals("")) {
             countTemp = 1;
         }
@@ -283,10 +299,10 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
         if (!b.temp4.getText().toString().equals("")) {
             countTemp = 4;
         }
-        if(!b.temp5.getText().toString().equals("")){
+        if (!b.temp5.getText().toString().equals("")) {
             countTemp = 5;
         }
-        if(!b.temp6.getText().toString().equals("")){
+        if (!b.temp6.getText().toString().equals("")) {
             countTemp = 6;
         }
     }
@@ -453,156 +469,152 @@ public class Fragment_MedicalCart_Show extends Fragment implements View.OnClickL
     }
 
     private void save() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefDayMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMountMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefAgeMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefHourMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefMinMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefCauseMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefFioMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTelMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefAdresMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefNoteMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefTemp1MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefTemp2MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefTemp3MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefTemp4MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefTemp5MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefTemp6MedCart" + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefDayMedCart" + position + id, Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("dayMedCart" + position + id, "").equals("")) {
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefDayMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMountMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefAgeMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefHourMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefMinMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefCauseMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefFioMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTelMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefAdresMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefNoteMedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefTemp1MedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefTemp2MedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefTemp3MedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefTemp4MedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefTemp5MedCart" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefTemp6MedCart" + position + id, Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-        editor1.putString("dayMedCart" + id, b.day1.getText().toString());
-        editor1.apply();
+            SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+            editor1.putString("dayMedCart" + position + id, b.day1.getText().toString());
+            editor1.apply();
 
-        SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-        editor2.putString("mountMedCart" + id, b.mount1.getText().toString());
-        editor2.apply();
+            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+            editor2.putString("mountMedCart" + position + id, b.mount1.getText().toString());
+            editor2.apply();
 
-        SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-        editor3.putString("ageMedCart" + id, b.age1.getText().toString());
-        editor3.apply();
+            SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+            editor3.putString("ageMedCart" + position + id, b.age1.getText().toString());
+            editor3.apply();
 
-        SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-        editor4.putString("hourMedCart" + id, b.hour1.getText().toString());
-        editor4.apply();
+            SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+            editor4.putString("hourMedCart" + position + id, b.hour1.getText().toString());
+            editor4.apply();
 
-        SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-        editor5.putString("minMedCart" + id, b.min1.getText().toString());
-        editor5.apply();
+            SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+            editor5.putString("minMedCart" + position + id, b.min1.getText().toString());
+            editor5.apply();
 
-        SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-        editor6.putString("causeMedCart" + id, b.text1.getText().toString());
-        editor6.apply();
+            SharedPreferences.Editor editor6 = sharedPreferences6.edit();
+            editor6.putString("causeMedCart" + position + id, b.text1.getText().toString());
+            editor6.apply();
 
-        SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-        editor7.putString("fioMedCart" + id, b.fio.getText().toString());
-        editor7.apply();
+            SharedPreferences.Editor editor7 = sharedPreferences7.edit();
+            editor7.putString("fioMedCart" + position + id, b.fio.getText().toString());
+            editor7.apply();
 
-        SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-        editor8.putString("telMedCart" + id, b.tel.getText().toString());
-        editor8.apply();
+            SharedPreferences.Editor editor8 = sharedPreferences8.edit();
+            editor8.putString("telMedCart" + position + id, b.tel.getText().toString());
+            editor8.apply();
 
-        SharedPreferences.Editor editor9 = sharedPreferences9.edit();
-        editor9.putString("adresMedCart" + id, b.adres.getText().toString());
-        editor9.apply();
+            SharedPreferences.Editor editor9 = sharedPreferences9.edit();
+            editor9.putString("adresMedCart" + position + id, b.adres.getText().toString());
+            editor9.apply();
 
-        SharedPreferences.Editor editor10 = sharedPreferences10.edit();
-        editor10.putString("noteMedCart" + id, b.poleNote1.getText().toString());
-        editor10.apply();
+            SharedPreferences.Editor editor10 = sharedPreferences10.edit();
+            editor10.putString("noteMedCart" + position + id, b.poleNote1.getText().toString());
+            editor10.apply();
 
-        SharedPreferences.Editor editor11 = sharedPreferences11.edit();
-        editor11.putString("temp1MedCart" + id, b.temp1.getText().toString());
-        editor11.apply();
+            SharedPreferences.Editor editor11 = sharedPreferences11.edit();
+            editor11.putString("temp1MedCart" + position + id, b.temp1.getText().toString());
+            editor11.apply();
 
-        SharedPreferences.Editor editor12 = sharedPreferences12.edit();
-        editor12.putString("temp2MedCart" + id, b.temp2.getText().toString());
-        editor12.apply();
+            SharedPreferences.Editor editor12 = sharedPreferences12.edit();
+            editor12.putString("temp2MedCart" + position + id, b.temp2.getText().toString());
+            editor12.apply();
 
-        SharedPreferences.Editor editor13 = sharedPreferences13.edit();
-        editor13.putString("temp3MedCart" + id, b.temp3.getText().toString());
-        editor13.apply();
+            SharedPreferences.Editor editor13 = sharedPreferences13.edit();
+            editor13.putString("temp3MedCart" + position + id, b.temp3.getText().toString());
+            editor13.apply();
 
-        SharedPreferences.Editor editor14 = sharedPreferences14.edit();
-        editor14.putString("temp4MedCart" + id, b.temp4.getText().toString());
-        editor14.apply();
+            SharedPreferences.Editor editor14 = sharedPreferences14.edit();
+            editor14.putString("temp4MedCart" + position + id, b.temp4.getText().toString());
+            editor14.apply();
 
-        SharedPreferences.Editor editor15 = sharedPreferences15.edit();
-        editor15.putString("temp5MedCart" + id, b.temp5.getText().toString());
-        editor15.apply();
+            SharedPreferences.Editor editor15 = sharedPreferences15.edit();
+            editor15.putString("temp5MedCart" + position + id, b.temp5.getText().toString());
+            editor15.apply();
 
-        SharedPreferences.Editor editor16 = sharedPreferences16.edit();
-        editor16.putString("temp6MedCart" + id, b.temp6.getText().toString());
-        editor16.apply();
+            SharedPreferences.Editor editor16 = sharedPreferences16.edit();
+            editor16.putString("temp6MedCart" + position + id, b.temp6.getText().toString());
+            editor16.apply();
 
-//        hide();
-        // открываем фрагмент мед карта
-        callback.onCreatFragment("medCarta");
+            callback.onCreatFragment("medCarta");
+        }
     }
 
 
     // метод подгрузки данных из сохраненки
     private void load() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefDayMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMountMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefAgeMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefHourMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefMinMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefCauseMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefFioMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTelMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefAdresMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefNoteMedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefTemp1MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefTemp2MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefTemp3MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefTemp4MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefTemp5MedCart" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefTemp6MedCart" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefDayMedCart" + position + id, Context.MODE_PRIVATE);
+            if (!sharedPreferences.getString("dayMedCart" + position + id, "").equals("")) {
+                SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefDayMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefMountMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefAgeMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefHourMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefMinMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefCauseMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefFioMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTelMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefAdresMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences10 = getActivity().getSharedPreferences("prefNoteMedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences11 = getActivity().getSharedPreferences("prefTemp1MedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences12 = getActivity().getSharedPreferences("prefTemp2MedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences13 = getActivity().getSharedPreferences("prefTemp3MedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences14 = getActivity().getSharedPreferences("prefTemp4MedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences15 = getActivity().getSharedPreferences("prefTemp5MedCart" + position + id, Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences16 = getActivity().getSharedPreferences("prefTemp6MedCart" + position + id, Context.MODE_PRIVATE);
 
-        String day = sharedPreferences1.getString("dayMedCart" + id, "");
-        String mount = sharedPreferences2.getString("mountMedCart" + id, "");
-        String age = sharedPreferences3.getString("ageMedCart" + id, "");
-        String hour = sharedPreferences4.getString("hourMedCart" + id, "");
-        String min = sharedPreferences5.getString("minMedCart" + id, "");
-        String cause = sharedPreferences6.getString("causeMedCart" + id, "");
-        String fio = sharedPreferences7.getString("fioMedCart" + id, "");
-        String tel = sharedPreferences8.getString("telMedCart" + id, "");
-        String adres = sharedPreferences9.getString("adresMedCart" + id, "");
-        String note = sharedPreferences10.getString("noteMedCart" + id, "");
-        String temp1 = sharedPreferences11.getString("temp1MedCart" + id, "");
-        String temp2 = sharedPreferences12.getString("temp2MedCart" + id, "");
-        String temp3 = sharedPreferences13.getString("temp3MedCart" + id, "");
-        String temp4 = sharedPreferences14.getString("temp4MedCart" + id, "");
-        String temp5 = sharedPreferences15.getString("temp5MedCart" + id, "");
-        String temp6 = sharedPreferences16.getString("temp6MedCart" + id, "");
+                String day = sharedPreferences1.getString("dayMedCart" + position + id, "");
+                String mount = sharedPreferences2.getString("mountMedCart" + position + id, "");
+                String age = sharedPreferences3.getString("ageMedCart" + position + id, "");
+                String hour = sharedPreferences4.getString("hourMedCart" + position + id, "");
+                String min = sharedPreferences5.getString("minMedCart" + position + id, "");
+                String cause = sharedPreferences6.getString("causeMedCart" + position + id, "");
+                String fio = sharedPreferences7.getString("fioMedCart" + position + id, "");
+                String tel = sharedPreferences8.getString("telMedCart" + position + id, "");
+                String adres = sharedPreferences9.getString("adresMedCart" + position + id, "");
+                String note = sharedPreferences10.getString("noteMedCart" + position + id, "");
+                String temp1 = sharedPreferences11.getString("temp1MedCart" + position + id, "");
+                String temp2 = sharedPreferences12.getString("temp2MedCart" + position + id, "");
+                String temp3 = sharedPreferences13.getString("temp3MedCart" + position + id, "");
+                String temp4 = sharedPreferences14.getString("temp4MedCart" + position + id, "");
+                String temp5 = sharedPreferences15.getString("temp5MedCart" + position + id, "");
+                String temp6 = sharedPreferences16.getString("temp6MedCart" + position + id, "");
 
-        b.textView23.setText(day + "." + mount + "." + age + ".г");
+                b.textView23.setText(day + "." + mount + "." + age + ".г");
 
-        b.day1.setText(day);
-        b.mount1.setText(mount);
-        b.age1.setText(age);
-        b.hour1.setText(hour);
-        b.min1.setText(min);
-        b.text1.setText(cause);
+                b.day1.setText(day);
+                b.mount1.setText(mount);
+                b.age1.setText(age);
+                b.hour1.setText(hour);
+                b.min1.setText(min);
+                b.text1.setText(cause);
 
-        b.fio.setText(fio);
-        b.tel.setText(tel);
-        b.adres.setText(adres);
-        b.poleNote1.setText(note);
-        b.temp1.setText(temp1);
-        b.temp2.setText(temp2);
-        b.temp3.setText(temp3);
-        b.temp4.setText(temp4);
-        b.temp5.setText(temp5);
-        b.temp6.setText(temp6);
-    }
-
-    // подгрузка id
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
-        }
+                b.fio.setText(fio);
+                b.tel.setText(tel);
+                b.adres.setText(adres);
+                b.poleNote1.setText(note);
+                b.temp1.setText(temp1);
+                b.temp2.setText(temp2);
+                b.temp3.setText(temp3);
+                b.temp4.setText(temp4);
+                b.temp5.setText(temp5);
+                b.temp6.setText(temp6);
+            }
     }
 
     // метод перехода на календарь

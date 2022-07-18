@@ -104,6 +104,8 @@ public class FragmentNote extends Fragment implements View.OnClickListener {
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
         editor2.putString("title"+id, b.poleNote2.getText().toString());
         editor2.apply();
+
+        callback.onCreatFragment("petsAll");
     }
 
     // метод перехода на календарь

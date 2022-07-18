@@ -1,13 +1,17 @@
 package com.example.recycler3;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import com.example.recycler3.databinding.FragmentExhibitionsBinding;
 import com.example.recycler3.databinding.FragmentExhibitionsShowBinding;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickListener {
@@ -26,6 +31,7 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
     private SampleCallback callback;
     private int id = 0;
     CreateMetod createMetod = new CreateMetod();
+    private int position = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -54,11 +60,26 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
         hide(); // скрыть разделы из редактирования
         initClicker();
         id(); // подгрузка айди
-        showSave(); // подругрузка данных из сохраненки по айди
+        bundle(); // подгрузка позиции
+        load(); // подругрузка данных из сохраненки по айди
         avto();
 
 
         return (v);
+    }
+
+    private void bundle() {
+        if (!this.getArguments().getString("key").equals("")) {
+            String i = this.getArguments().getString("key");
+            position = Integer.parseInt(i);
+        }
+    }
+
+    // подгрузка id
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     private void avto() {
@@ -66,49 +87,46 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
     }
 
 
-    private void showSave() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefExhibitionDay" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefExhibitionMount" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefExhibitionAge" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefExhibitionBrend" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefExhibitionFio" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefExhibitionNote" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefExhibitionStatus" + id, Context.MODE_PRIVATE);
+    private void load() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefExhibitionDay" + position + id, Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("exhibitionDay" + position + id, "").equals("")) {
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefExhibitionDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefExhibitionMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefExhibitionAge" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefExhibitionBrend" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefExhibitionFio" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefExhibitionNote" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefExhibitionStatus" + position + id, Context.MODE_PRIVATE);
 
-        String day = sharedPreferences1.getString("exhibitionDay" + id, "");
-        String mount = sharedPreferences2.getString("exhibitionMount" + id, "");
-        String age = sharedPreferences3.getString("exhibitionAge" + id, "");
-        String brend = sharedPreferences4.getString("exhibitionBrend" + id, "");
-        String fio = sharedPreferences5.getString("exhibitionFio" + id, "");
-        String note = sharedPreferences6.getString("exhibitionNote" + id, "");
-        String status = sharedPreferences7.getString("exhibitionStatus" + id, "");
+            String day = sharedPreferences1.getString("exhibitionDay" + position + id, "");
+            String mount = sharedPreferences2.getString("exhibitionMount" + position + id, "");
+            String age = sharedPreferences3.getString("exhibitionAge" + position + id, "");
+            String brend = sharedPreferences4.getString("exhibitionBrend" + position + id, "");
+            String fio = sharedPreferences5.getString("exhibitionFio" + position + id, "");
+            String note = sharedPreferences6.getString("exhibitionNote" + position + id, "");
+            String status = sharedPreferences7.getString("exhibitionStatus" + position + id, "");
 
-        if(status.equals("Гость")){
-            b.spinner.setSelection(0);
-        } else if(status.equals("Участник")){
-            b.spinner.setSelection(1);
-        }
+            if (status.equals("Гость")) {
+                b.spinner.setSelection(0);
+            } else if (status.equals("Участник")) {
+                b.spinner.setSelection(1);
+            }
 
-        b.day.setText(day);
-        b.mount.setText(mount);
-        b.age.setText(age);
-        b.editText11.setText(brend);
-        b.editText12.setText(fio);
-        b.poleNote2.setText(note);
-        b.textSpiner.setText(status);
-    }
-
-    // подгрузка id
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
+            b.day.setText(day);
+            b.mount.setText(mount);
+            b.age.setText(age);
+            b.editText11.setText(brend);
+            b.editText12.setText(fio);
+            b.poleNote2.setText(note);
+            b.textSpiner.setText(status);
         }
     }
+
 
     private void initClicker() {
         b.bigPen.setOnClickListener(this);
         b.btnSave.setOnClickListener(this);
+        b.layoutSetTextExhibition.setOnClickListener(this);
     }
 
     private void hide() {
@@ -151,10 +169,14 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
             case R.id.btnSave:
                 testData(b.day, b.mount, b.age);
                 break;
+            case R.id.layoutSetTextExhibition:
+                intentCalender();
+                break;
         }
     }
 
-    private void testData(EditText day, EditText mount, EditText age){
+    private void testData(EditText day, EditText mount, EditText age) {
+
         SimpleDateFormat datD = new SimpleDateFormat("dd");
         String currentDateandD = datD.format(new Date());
         String data1 = ("" + currentDateandD);
@@ -213,51 +235,48 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
             } else {
                 save();
             }
+        } else {
+            save();
         }
     }
 
     private void save() {
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefExhibitionDay"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+            editor1.putString("exhibitionDay" + position + id, b.day.getText().toString());
+            editor1.apply();
 
-            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefExhibitionDay" + id, Context.MODE_PRIVATE);
-            if (sharedPreferences.getString("exhibitionDay" + id, "").equals("")) {
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefExhibitionMount"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+            editor2.putString("exhibitionMount"  + position + id, b.mount.getText().toString());
+            editor2.apply();
 
-                SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefExhibitionDay" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-                editor1.putString("exhibitionDay" + id, b.day.getText().toString());
-                editor1.apply();
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefExhibitionAge"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor3 = sharedPreferences3.edit();
+            editor3.putString("exhibitionAge" + position  + id, b.age.getText().toString());
+            editor3.apply();
 
-                SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefExhibitionMount" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-                editor2.putString("exhibitionMount" + id, b.mount.getText().toString());
-                editor2.apply();
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefExhibitionBrend" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+            editor4.putString("exhibitionBrend"  + position+ id, b.editText11.getText().toString());
+            editor4.apply();
 
-                SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefExhibitionAge" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-                editor3.putString("exhibitionAge" + id, b.age.getText().toString());
-                editor3.apply();
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefExhibitionFio" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor5 = sharedPreferences5.edit();
+            editor5.putString("exhibitionFio" + position + id, b.editText12.getText().toString());
+            editor5.apply();
 
-                SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefExhibitionBrend" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-                editor4.putString("exhibitionBrend" + id, b.editText11.getText().toString());
-                editor4.apply();
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefExhibitionNote"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor6 = sharedPreferences6.edit();
+            editor6.putString("exhibitionNote" + position + id, b.poleNote2.getText().toString());
+            editor6.apply();
 
-                SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefExhibitionFio" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-                editor5.putString("exhibitionFio" + id, b.editText12.getText().toString());
-                editor5.apply();
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefExhibitionStatus" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor7 = sharedPreferences7.edit();
+            editor7.putString("exhibitionStatus"  + position + id, b.spinner.getSelectedItem().toString());
+            editor7.apply();
 
-                SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefExhibitionNote" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-                editor6.putString("exhibitionNote" + id, b.poleNote2.getText().toString());
-                editor6.apply();
-
-                SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefExhibitionStatus" + id, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-                editor7.putString("exhibitionStatus" + id, b.spinner.getSelectedItem().toString());
-                editor7.apply();
-
-                callback.onCreatFragment("exhibitionBack");
-        }
+            callback.onCreatFragment("exhibitionBack");
     }
 
     private void setSoftKeyboard() {
@@ -295,4 +314,15 @@ public class Fragment_Exhibitions_Show extends Fragment implements View.OnClickL
         b.imageView13.setVisibility(View.VISIBLE);
         b.textView13.setVisibility(View.VISIBLE);
     }
+
+    // метод перехода на календарь
+    private void intentCalender() {
+        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+        builder.appendPath("time");
+        ContentUris.appendId(builder, Calendar.getInstance().getTimeInMillis());
+        Intent intent = new Intent(Intent.ACTION_VIEW)
+                .setData(builder.build());
+        startActivity(intent);
+    }
+
 }

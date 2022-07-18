@@ -31,6 +31,7 @@ public class FragTrainingShow extends Fragment implements View.OnClickListener{
     private SampleCallback callback;
     private int id = 0;
     CreateMetod createMetod = new CreateMetod();
+    private int position = 0;
 
 
     @Override
@@ -59,44 +60,62 @@ public class FragTrainingShow extends Fragment implements View.OnClickListener{
         data(); // авто переход по датам
         hide();
         id();
+        bundle(); // подгрузка позиции
         initCliker();
-        showSave();
+        load();
 
         return v;
+    }
+
+    private void bundle() {
+        if (!this.getArguments().getString("key").equals("")) {
+            String i = this.getArguments().getString("key");
+            position = Integer.parseInt(i);
+        }
+    }
+
+    // подгрузка id
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     private void data() {
         createMetod.dataAvtomat(b.day, b.mount, b.age, b.editText14);
     }
 
-    private void showSave() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTrainingAge" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingName" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingAdrees" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingFio" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingTel" + id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingNote" + id, Context.MODE_PRIVATE);
+    private void load() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefTrainingDay" + position + id, Context.MODE_PRIVATE);
+        if(!sharedPreferences.getString("trainingDay" + position + id, "").equals("")){
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefTrainingAge"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingName" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingAdrees"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingFio"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingTel"  + position+ id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingNote"  + position+ id, Context.MODE_PRIVATE);
 
-        String day = sharedPreferences1.getString("trainingDay" + id, "");
-        String mount = sharedPreferences2.getString("trainingMount" + id, "");
-        String age = sharedPreferences3.getString("trainingAge" + id, "");
-        String name = sharedPreferences4.getString("trainingName" + id, "");
-        String adrees = sharedPreferences5.getString("trainingAdrees" + id, "");
-        String fio = sharedPreferences6.getString("trainingFio" + id, "");
-        String tel = sharedPreferences7.getString("trainingTel" + id, "");
-        String note = sharedPreferences8.getString("trainingNote" + id, "");
+            String day = sharedPreferences1.getString("trainingDay" + position + id, "");
+            String mount = sharedPreferences2.getString("trainingMount" + position + id, "");
+            String age = sharedPreferences3.getString("trainingAge" + position + id, "");
+            String name = sharedPreferences4.getString("trainingName" + position + id, "");
+            String adrees = sharedPreferences5.getString("trainingAdrees"  + position+ id, "");
+            String fio = sharedPreferences6.getString("trainingFio" + position + id, "");
+            String tel = sharedPreferences7.getString("trainingTel"  + position + id, "");
+            String note = sharedPreferences8.getString("trainingNote" + position + id, "");
 
-        b.day.setText(day);
-        b.mount.setText(mount);
-        b.age.setText(age);
+            b.day.setText(day);
+            b.mount.setText(mount);
+            b.age.setText(age);
 
-        b.editText13.setText(name);
-        b.editText14.setText(adrees);
-        b.editText15.setText(fio);
-        b.textView236.setText(tel);
-        b.poleNote2.setText(note);
+            b.editText13.setText(name);
+            b.editText14.setText(adrees);
+            b.editText15.setText(fio);
+            b.textView236.setText(tel);
+            b.poleNote2.setText(note);
+        }
     }
 
 
@@ -172,14 +191,6 @@ public class FragTrainingShow extends Fragment implements View.OnClickListener{
         b.textView236.setEnabled(true);
         b.poleNote2.setEnabled(true);
 
-    }
-
-    // подгрузка id
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
-        }
     }
 
     @Override
@@ -262,48 +273,47 @@ public class FragTrainingShow extends Fragment implements View.OnClickListener{
         } else {
             save();
         }
-
     }
 
     private void save() {
-            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefTrainingDay" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-            editor1.putString("trainingDay" + id, b.day.getText().toString());
+            editor1.putString("trainingDay" + position + id, b.day.getText().toString());
             editor1.apply();
 
-            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefTrainingMount"  + position+ id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-            editor2.putString("trainingMount" + id, b.day.getText().toString());
+            editor2.putString("trainingMount"  + position + id, b.day.getText().toString());
             editor2.apply();
 
-            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingAge" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefTrainingAge" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-            editor4.putString("trainingAge" + id, b.age.getText().toString());
+            editor4.putString("trainingAge" + position+ id, b.age.getText().toString());
             editor4.apply();
 
-            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingName" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefTrainingName" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-            editor5.putString("trainingName" + id, b.editText13.getText().toString());
+            editor5.putString("trainingName" + position + id, b.editText13.getText().toString());
             editor5.apply();
 
-            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingAdrees" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefTrainingAdrees" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-            editor6.putString("trainingAdrees" + id, b.editText14.getText().toString());
+            editor6.putString("trainingAdrees" + position + id, b.editText14.getText().toString());
             editor6.apply();
 
-            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingFio" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefTrainingFio" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-            editor7.putString("trainingFio" + id, b.editText15.getText().toString());
+            editor7.putString("trainingFio" + position + id, b.editText15.getText().toString());
             editor7.apply();
 
-            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingTel" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefTrainingTel"+ position  + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-            editor8.putString("trainingTel" + id, b.textView23.getText().toString());
+            editor8.putString("trainingTel" + position + id, b.textView23.getText().toString());
             editor8.apply();
 
-            SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefTrainingNote" + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences9 = getActivity().getSharedPreferences("prefTrainingNote" + position + id, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor9 = sharedPreferences9.edit();
-            editor9.putString("trainingNote" + id, b.poleNote2.getText().toString());
+            editor9.putString("trainingNote" + position + id, b.poleNote2.getText().toString());
             editor9.apply();
 
         callback.onCreatFragment("exhibitionBack");

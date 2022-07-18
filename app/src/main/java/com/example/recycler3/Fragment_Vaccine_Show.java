@@ -27,11 +27,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListener{
+public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListener {
     private FragmentVaccineShowBinding b;
     private int id = 0;
     private SampleCallback callback;
     CreateMetod createMetod = new CreateMetod();
+    private int position = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -60,10 +61,25 @@ public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListe
         hide(); // скрыть разделы из редактирования
         initClick(); // инициализация кнопок
         id(); // подгрузка айди
-        showSave(); // подругрузка данных из сохраненки по айди
+        bundle(); // подгрузка позиции
+        load(); // подругрузка данных из сохраненки по айди
 
 
         return v;
+    }
+
+    private void bundle() {
+        if (!this.getArguments().getString("key").equals("")) {
+            String i = this.getArguments().getString("key");
+            position = Integer.parseInt(i);
+        }
+    }
+
+    // подгрузка id
+    private void id() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefActiv", Context.MODE_PRIVATE);
+        String idS = sharedPreferences.getString("activ", "");
+        id = Integer.parseInt(idS);
     }
 
     private void data() {
@@ -72,39 +88,35 @@ public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListe
         createMetod.nextEdit(b.param, b.editText5, 34);
     }
 
-    private void showSave() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine"+id, Context.MODE_PRIVATE);
+    private void load() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefVaccineDay" + position + id, Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("vaccineDay" + position + id, "").equals("")) {
+            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine" + position + id, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine" + position + id, Context.MODE_PRIVATE);
 
-        String day = sharedPreferences1.getString("vaccineDay"+id, "");
-        String mount = sharedPreferences2.getString("vaccineMount"+id, "");
-        String age = sharedPreferences3.getString("vaccineAge"+id, "");
-        String exitDay = sharedPreferences4.getString("vaccineExitDay"+id, "");
-        String exitMount = sharedPreferences5.getString("vaccineExitMount"+id, "");
-        String exitAge = sharedPreferences6.getString("vaccineExitAge"+id, "");
-        String drug = sharedPreferences7.getString("drugVaccine"+id, "");
-        String note = sharedPreferences8.getString("noteVaccine"+id, "");
+            String day = sharedPreferences1.getString("vaccineDay" + position + id, "");
+            String mount = sharedPreferences2.getString("vaccineMount" + position + id, "");
+            String age = sharedPreferences3.getString("vaccineAge" + position + id, "");
+            String exitDay = sharedPreferences4.getString("vaccineExitDay" + position + id, "");
+            String exitMount = sharedPreferences5.getString("vaccineExitMount" + position + id, "");
+            String exitAge = sharedPreferences6.getString("vaccineExitAge" + position + id, "");
+            String drug = sharedPreferences7.getString("drugVaccine" + position + id, "");
+            String note = sharedPreferences8.getString("noteVaccine" + position + id, "");
 
-        b.day.setText(day);
-        b.editText2.setText(mount);
-        b.age.setText(age);
-        b.param.setText(drug);
-        b.editText5.setText(exitDay);
-        b.editText6.setText(exitMount);
-        b.editText7.setText(exitAge);
-        b.poleNote2.setText(note);
-    }
-
-    private void id() {
-        if (!this.getArguments().getString("key").equals("")) {
-            String i = this.getArguments().getString("key");
-            id = Integer.parseInt(i);
+            b.day.setText(day);
+            b.editText2.setText(mount);
+            b.age.setText(age);
+            b.param.setText(drug);
+            b.editText5.setText(exitDay);
+            b.editText6.setText(exitMount);
+            b.editText7.setText(exitAge);
+            b.poleNote2.setText(note);
         }
     }
 
@@ -155,7 +167,7 @@ public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListe
         }
     }
 
-    private void testData(EditText day, EditText mount, EditText age){
+    private void testData(EditText day, EditText mount, EditText age) {
         SimpleDateFormat datD = new SimpleDateFormat("dd");
         String currentDateandD = datD.format(new Date());
         String data1 = ("" + currentDateandD);
@@ -251,7 +263,7 @@ public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListe
                 mount2.requestFocus();
                 setSoftKeyboard();
                 Toast.makeText(getActivity(), "Превышает количество месяцев в году", Toast.LENGTH_SHORT).show();
-            } else if (ageInt2 > currentAge+2) {
+            } else if (ageInt2 > currentAge + 2) {
                 age2.setText("");
                 age2.requestFocus();
                 setSoftKeyboard();
@@ -270,45 +282,45 @@ public class Fragment_Vaccine_Show extends Fragment implements View.OnClickListe
     }
 
     private void save() {
-        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine"+id, Context.MODE_PRIVATE);
-        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine"+id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefVaccineDay" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("prefVaccineMount" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences3 = getActivity().getSharedPreferences("prefVaccineAge" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences4 = getActivity().getSharedPreferences("prefVaccineExitDay" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences5 = getActivity().getSharedPreferences("prefVaccineExitMount" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences6 = getActivity().getSharedPreferences("prefVaccineExitAge" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences7 = getActivity().getSharedPreferences("prefDrugVaccine" + position + id, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences8 = getActivity().getSharedPreferences("prefNoteVaccine" + position + id, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor1 = sharedPreferences1.edit();
-        editor1.putString("vaccineDay"+id, b.day.getText().toString());
+        editor1.putString("vaccineDay" + position + id, b.day.getText().toString());
         editor1.apply();
 
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
-        editor2.putString("vaccineMount"+id, b.editText2.getText().toString());
+        editor2.putString("vaccineMount"+ position  + id, b.editText2.getText().toString());
         editor2.apply();
 
         SharedPreferences.Editor editor3 = sharedPreferences3.edit();
-        editor3.putString("vaccineAge"+id, b.age.getText().toString());
+        editor3.putString("vaccineAge" + position + id, b.age.getText().toString());
         editor3.apply();
 
         SharedPreferences.Editor editor4 = sharedPreferences4.edit();
-        editor4.putString("vaccineExitDay"+id, b.editText5.getText().toString());
+        editor4.putString("vaccineExitDay" + position + id, b.editText5.getText().toString());
         editor4.apply();
 
         SharedPreferences.Editor editor5 = sharedPreferences5.edit();
-        editor5.putString("vaccineExitMount"+id, b.editText6.getText().toString());
+        editor5.putString("vaccineExitMount" + position + id, b.editText6.getText().toString());
         editor5.apply();
 
         SharedPreferences.Editor editor6 = sharedPreferences6.edit();
-        editor6.putString("vaccineExitAge"+id, b.editText7.getText().toString());
+        editor6.putString("vaccineExitAge" + position + id, b.editText7.getText().toString());
         editor6.apply();
 
         SharedPreferences.Editor editor7 = sharedPreferences7.edit();
-        editor7.putString("drugVaccine"+id, b.param.getText().toString());
+        editor7.putString("drugVaccine" + position + id, b.param.getText().toString());
         editor7.apply();
 
         SharedPreferences.Editor editor8 = sharedPreferences8.edit();
-        editor8.putString("noteVaccine"+id, b.poleNote2.getText().toString());
+        editor8.putString("noteVaccine" + position + id, b.poleNote2.getText().toString());
         editor8.apply();
     }
 
