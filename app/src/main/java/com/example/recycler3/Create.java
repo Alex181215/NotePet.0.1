@@ -44,21 +44,21 @@ public class Create extends AppCompatActivity implements SampleCallback {
             if (argument.getString("key").equals("FragmentPets")) {
                 FragmentPets pets = new FragmentPets();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, pets).addToBackStack("tag");
+                transaction.replace(R.id.container, pets);
                 transaction.commit();
                 layotBarPets();
                 b.txHeader.setText("Мои питомцы");
             } else if (argument.getString("key").equals("FragmentCreate")) {
                 FragmentCreate create = new FragmentCreate();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, create).addToBackStack("tag");
+                transaction.replace(R.id.container, create);
                 transaction.commit();
                 layotBarPets();
                 b.txHeader.setText("Добавить питомца");
+                b.layoutBar.setVisibility(View.GONE);
             }
         }
     }
-
 
     // Кнопка Меню
     public void menu(View view) {
@@ -107,7 +107,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentMedicalCart med = new FragmentMedicalCart();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, med).addToBackStack("tag");
+//                trans.replace(R.id.container, med).addToBackStack("tag");
+                trans.replace(R.id.container, med);
                 trans.commit();
                 popupWindow.dismiss();
 //                textHeader("Медицинская карта");
@@ -120,7 +121,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentMedicalCart med = new FragmentMedicalCart();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, med).addToBackStack("tag");
+//                trans.replace(R.id.container, med).addToBackStack("tag");
+                trans.replace(R.id.container, med);
                 trans.commit();
                 popupWindow.dismiss();
 //                textHeader("Медицинская карта");
@@ -134,7 +136,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentAchievements ach = new FragmentAchievements();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, ach).addToBackStack("tag");
+//                trans.replace(R.id.container, ach).addToBackStack("tag");
+                trans.replace(R.id.container, ach);
                 trans.commit();
                 popupWindow.dismiss();
             }
@@ -146,7 +149,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentAchievements ach = new FragmentAchievements();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, ach).addToBackStack("tag");
+//                trans.replace(R.id.container, ach).addToBackStack("tag");
+                trans.replace(R.id.container, ach);
                 trans.commit();
                 popupWindow.dismiss();
             }
@@ -159,7 +163,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentKnitting knit = new FragmentKnitting();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, knit).addToBackStack("tag");
+//                trans.replace(R.id.container, knit).addToBackStack("tag");
+                trans.replace(R.id.container, knit);
                 trans.commit();
                 popupWindow.dismiss();
                 textHeader("Разведение животных");
@@ -172,7 +177,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentKnitting knit = new FragmentKnitting();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, knit).addToBackStack("tag");
+//                trans.replace(R.id.container, knit).addToBackStack("tag");
+                trans.replace(R.id.container, knit);
                 trans.commit();
                 popupWindow.dismiss();
                 textHeader("Разведение животных");
@@ -185,7 +191,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentPedigree pedi = new FragmentPedigree();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, pedi).addToBackStack("tag");
+//                trans.replace(R.id.container, pedi).addToBackStack("tag");
+                trans.replace(R.id.container, pedi);
                 trans.commit();
                 popupWindow.dismiss();
 //                textHeader("Родословная");
@@ -198,7 +205,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentPedigree pedi = new FragmentPedigree();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, pedi).addToBackStack("tag");
+//                trans.replace(R.id.container, pedi).addToBackStack("tag");
+                trans.replace(R.id.container, pedi);
                 trans.commit();
                 popupWindow.dismiss();
 //                textHeader("Родословная");
@@ -211,7 +219,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentTravel travel = new FragmentTravel();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, travel).addToBackStack("tag");
+//                trans.replace(R.id.container, travel).addToBackStack("tag");
+                trans.replace(R.id.container, travel);
                 trans.commit();
                 popupWindow.dismiss();
             }
@@ -223,7 +232,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             public void onClick(View view) {
                 FragmentTravel travel = new FragmentTravel();
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-                trans.replace(R.id.container, travel).addToBackStack("tag");
+//                trans.replace(R.id.container, travel).addToBackStack("tag");
+                trans.replace(R.id.container, travel);
                 trans.commit();
                 popupWindow.dismiss();
             }
@@ -233,12 +243,22 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
     // Кнопка Питомцы
     public void pets(View view) {
-        fragPets();
+        SharedPreferences sharedPreferences = getSharedPreferences("prefName1", MODE_PRIVATE);
+        if(!sharedPreferences.getString("name1", "").equals("")){
+            fragPets();
+        } else {
+            Toast.makeText(Create.this, "Создайте питомца", Toast.LENGTH_SHORT);
+        }
     }
 
     // Кнопка Заметки
     public void note(View view) {
-        fragNote();
+        SharedPreferences sharedPreferences = getSharedPreferences("prefName1", MODE_PRIVATE);
+        if(!sharedPreferences.getString("name1", "").equals("")){
+            fragNote();
+        } else {
+            Toast.makeText(Create.this, "Создайте питомца", Toast.LENGTH_SHORT);
+        }
     }
 
     // Нажатие Меню
@@ -265,7 +285,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
         FragmentCreate create = new FragmentCreate();
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.container, create).addToBackStack("tag");
+//        trans.replace(R.id.container, create).addToBackStack("tag");
+        trans.replace(R.id.container, create);
         trans.commit();
     }
 
@@ -275,7 +296,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
         FragmentPets pets = new FragmentPets();
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.container, pets).addToBackStack("tag");
+//        trans.replace(R.id.container, pets).addToBackStack("tag");
+        trans.replace(R.id.container, pets);
         trans.commit();
     }
 
@@ -290,7 +312,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
         FragmentNote note = new FragmentNote();
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.container, note).addToBackStack("tag");
+//        trans.replace(R.id.container, note).addToBackStack("tag");
+        trans.replace(R.id.container, note);
         trans.commit();
     }
 
@@ -301,7 +324,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
         FragmentEdit edit = new FragmentEdit();
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.container, edit).addToBackStack("tag");
+//        trans.replace(R.id.container, edit).addToBackStack("tag");
+        trans.replace(R.id.container, edit);
         trans.commit();
     }
 
@@ -311,7 +335,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
         FragmentHistory history = new FragmentHistory();
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.container, history).addToBackStack("tag");
+//        trans.replace(R.id.container, history).addToBackStack("tag");
+        trans.replace(R.id.container, history);
         trans.commit();
     }
 
@@ -381,7 +406,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if (key.equals("test")) {
             FragmentPets pets = new FragmentPets();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, pets).addToBackStack("tag");
+//            transaction.replace(R.id.container, pets).addToBackStack("tag");
+            transaction.replace(R.id.container, pets);
             transaction.commit();
             layotBarPets();
             b.txHeader.setText("Мои питомцы");
@@ -394,7 +420,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             fragmentMedicalCartShow.setArguments(bundle);
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragmentMedicalCartShow).addToBackStack("tag");
+//            transaction.replace(R.id.container, fragmentMedicalCartShow).addToBackStack("tag");
+            transaction.replace(R.id.container, fragmentMedicalCartShow);
             transaction.commit();
             layotBarMenu();
         } else if (key.equals("treatmentlayout")) {
@@ -406,7 +433,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             fragmenttreatmentshow.setArguments(bundle);
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragmenttreatmentshow).addToBackStack("tag");
+//            transaction.replace(R.id.container, fragmenttreatmentshow).addToBackStack("tag");
+            transaction.replace(R.id.container, fragmenttreatmentshow);
             transaction.commit();
             layotBarMenu();
             textHeader("Обработка");
@@ -419,7 +447,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             fragment_vaccine_show.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, fragment_vaccine_show).addToBackStack("tag");
+            trans.replace(R.id.container, fragment_vaccine_show);
+//            trans.replace(R.id.container, fragment_vaccine_show).addToBackStack("tag");
             trans.commit();
             layotBarMenu();
             textHeader("Вакцинация");
@@ -432,7 +461,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             exhibitions_show.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, exhibitions_show).addToBackStack("tag");
+//            trans.replace(R.id.container, exhibitions_show).addToBackStack("tag");
+            trans.replace(R.id.container, exhibitions_show);
             trans.commit();
             layotBarMenu();
             textHeader("Выставка");
@@ -445,7 +475,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             trainingShow.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, trainingShow).addToBackStack("tag");
+//            trans.replace(R.id.container, trainingShow).addToBackStack("tag");
+            trans.replace(R.id.container, trainingShow);
             trans.commit();
             layotBarMenu();
             textHeader("Дрессировка");
@@ -457,7 +488,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             knittingEdit.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+//            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+            trans.replace(R.id.container, knittingEdit);
             trans.commit();
             layotBarMenu();
             textHeader("Добавить вязку");
@@ -470,7 +502,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             fragmentKnitShow.setArguments(bundle);
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragmentKnitShow).addToBackStack("tag");
+//            transaction.replace(R.id.container, fragmentKnitShow).addToBackStack("tag");
+            transaction.replace(R.id.container, fragmentKnitShow);
             transaction.commit();
             layotBarMenu();
             textHeader("Вязка");
@@ -488,7 +521,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             knittingEdit.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+//            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+            trans.replace(R.id.container, knittingEdit);
             trans.commit();
             layotBarMenu();
             textHeader("Добавить вязку");
@@ -501,10 +535,19 @@ public class Create extends AppCompatActivity implements SampleCallback {
             knittingEdit.setArguments(bundle);
 
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+//            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+            trans.replace(R.id.container, knittingEdit);
             trans.commit();
             layotBarMenu();
             textHeader("Добавить вязку");
+        } else if(key.equals("ChildEdit")){
+            Fragment_Knit_Show show = new Fragment_Knit_Show();
+            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+//            trans.replace(R.id.container, show).addToBackStack("tag");
+            trans.replace(R.id.container, show);
+            trans.commit();
+            layotBarMenu();
+            textHeader("Проверка");
         }
 
 
@@ -521,12 +564,18 @@ public class Create extends AppCompatActivity implements SampleCallback {
             fragmentKnitShow.setArguments(bundle);
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragmentKnitShow).addToBackStack("tag");
+//            transaction.replace(R.id.container, fragmentKnitShow).addToBackStack("tag");
+            transaction.replace(R.id.container, fragmentKnitShow);
             transaction.commit();
 
             layotBarMenu();
             textHeader("Вязка редактирование");
         }
+    }
+
+    @Override
+    public void onPetVoid() {
+        b.layoutBar.setVisibility(View.VISIBLE);
     }
 
     private void testActiv(int position) {
@@ -578,13 +627,15 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if (key.equals("treatment")) {
             FragmentTreatmentEdit treatment = new FragmentTreatmentEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, treatment).addToBackStack("tag");
+//            trans.replace(R.id.container, treatment).addToBackStack("tag");
+            trans.replace(R.id.container, treatment);
             trans.commit();
             layotBarMenu();
         } else if (key.equals("vaccine")) {
             FragmentVaccineEdit vaccine = new FragmentVaccineEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, vaccine).addToBackStack("tag");
+//            trans.replace(R.id.container, vaccine).addToBackStack("tag");
+            trans.replace(R.id.container, vaccine);
             trans.commit();
             layotBarMenu();
         } else if (key.equals("FragmentTreatmentEdit")) {
@@ -617,28 +668,33 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if (key.equals("medicalCard")) {
             FragmentMedicalCardEdit vaccine = new FragmentMedicalCardEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, vaccine).addToBackStack("tag");
+//            trans.replace(R.id.container, vaccine).addToBackStack("tag");
+            trans.replace(R.id.container, vaccine);
             trans.commit();
         } else if (key.equals("exhibitions")) {
             FragmentExhibitionsEdit exhibitions = new FragmentExhibitionsEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, exhibitions).addToBackStack("tag");
+//            trans.replace(R.id.container, exhibitions).addToBackStack("tag");
+            trans.replace(R.id.container, exhibitions);
             trans.commit();
         } else if (key.equals("training")) {
             FragmentTrainingEdit training = new FragmentTrainingEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, training).addToBackStack("tag");
+//            trans.replace(R.id.container, training).addToBackStack("tag");
+            trans.replace(R.id.container, training);
             trans.commit();
         } else if (key.equals("knitting")) {
             FragmentKnittingEdit knittingEdit = new FragmentKnittingEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+//            trans.replace(R.id.container, knittingEdit).addToBackStack("tag");
+            trans.replace(R.id.container, knittingEdit);
             trans.commit();
             textHeader("Добавить вязку");
         } else if (key.equals("pedigree")) {
             FragmentPedigreeEdit knit = new FragmentPedigreeEdit();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, knit).addToBackStack("tag");
+//            trans.replace(R.id.container, knit).addToBackStack("tag");
+            trans.replace(R.id.container, knit);
             trans.commit();
             textHeader("Создание связи");
             layotBarMenu();
@@ -654,40 +710,47 @@ public class Create extends AppCompatActivity implements SampleCallback {
         } else if (key.equals("backTreatment")) {
             FragmentTreatment fragmentTreatment = new FragmentTreatment();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, fragmentTreatment).addToBackStack("tag");
+//            trans.replace(R.id.container, fragmentTreatment).addToBackStack("tag");
+            trans.replace(R.id.container, fragmentTreatment);
             trans.commit();
             layotBarMenu();
             textHeader("Медицинская карта");
         } else if (key.equals("medCarta")) {
             FragmentMedicalCart med = new FragmentMedicalCart();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, med).addToBackStack("tag");
+//            trans.replace(R.id.container, med).addToBackStack("tag");
+            trans.replace(R.id.container, med);
             trans.commit();
         } else if (key.equals("exhibitionBack")) {
             FragmentAchievements ach = new FragmentAchievements();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, ach).addToBackStack("tag");
+//            trans.replace(R.id.container, ach).addToBackStack("tag");
+            trans.replace(R.id.container, ach);
             trans.commit();
         } else if (key.equals("KnittingCreate")) {
             FragmentKnittingCreate create = new FragmentKnittingCreate();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, create).addToBackStack("tag");
+//            trans.replace(R.id.container, create).addToBackStack("tag");
+            trans.replace(R.id.container, create);
             trans.commit();
         } else if (key.equals("FragmentKnittingSave")) {
             FragmentKnitting fragmentKnitting = new FragmentKnitting();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, fragmentKnitting).addToBackStack("tag");
+//            trans.replace(R.id.container, fragmentKnitting).addToBackStack("tag");
+            trans.replace(R.id.container, fragmentKnitting);
             trans.commit();
         } else if(key.equals("Child")){
             Toast.makeText(Create.this, "проверка", Toast.LENGTH_SHORT).show();
             FragmentKnittingCreate create = new FragmentKnittingCreate();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, create).addToBackStack("tag");
+//            trans.replace(R.id.container, create).addToBackStack("tag");
+            trans.replace(R.id.container, create);
             trans.commit();
         } else if(key.equals("createChild")){
             FragmentCreate create = new FragmentCreate();
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, create).addToBackStack("tag");
+//            trans.replace(R.id.container, create).addToBackStack("tag");
+            trans.replace(R.id.container, create);
             trans.commit();
 
             layotBarPets();
@@ -708,7 +771,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             Fragment_Treatment_Show fragment_treatment_show = new Fragment_Treatment_Show();
             fragment_treatment_show.setArguments(bundle);
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, fragment_treatment_show).addToBackStack("tag");
+//            trans.replace(R.id.container, fragment_treatment_show).addToBackStack("tag");
+            trans.replace(R.id.container, fragment_treatment_show);
             trans.commit();
             layotBarMenu();
             textHeader("Обработка");
@@ -722,7 +786,8 @@ public class Create extends AppCompatActivity implements SampleCallback {
             Fragment_Vaccine_Show fragment_vaccine_show = new Fragment_Vaccine_Show();
             fragment_vaccine_show.setArguments(bundle);
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.container, fragment_vaccine_show).addToBackStack("tag");
+//            trans.replace(R.id.container, fragment_vaccine_show).addToBackStack("tag");
+            trans.replace(R.id.container, fragment_vaccine_show);
             trans.commit();
             layotBarMenu();
             textHeader("Вакцинация");

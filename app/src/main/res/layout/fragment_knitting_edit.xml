@@ -1008,9 +1008,9 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/minus"
-                    android:visibility="gone"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -1033,7 +1033,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text=""/>
+                    android:text="" />
 
 
                 <TextView

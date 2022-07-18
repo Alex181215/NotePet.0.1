@@ -5,6 +5,7 @@ public interface SampleCallback {
     void onButtonClicked(String key, int position);
     void onButtonClicked2(String key, int women, int man);
     void onButtonClicked3(String key, int position, String edit);
+    void onPetVoid();
     // это у нас возвращает фрагмент,
     void onCreatFragment(String key);
     void onMedShow(String key, String data1, String drug, String data2, int i);

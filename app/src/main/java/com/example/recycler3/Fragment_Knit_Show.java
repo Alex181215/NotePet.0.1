@@ -28,6 +28,8 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
     private int showCount = 0;
     private int infoCount = 0;
     private int childCount = 0;
+    private int countKn = 1;
+    private int countTemp = 1;
     private boolean edit = false; // по умолчанию едит выключен
 
     @Override
@@ -56,9 +58,9 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         loadId(); // получить айди
         show(); // метод подгрузить сохраненные данные по айди
         initClicker(); // инициализация слушателей
-        if(edit == false){
+        if (edit == false) {
             showAll();
-        } else if(edit == true){
+        } else if (edit == true) {
             b.layoutEdit.setVisibility(View.GONE);
             yesEditText();
         }
@@ -83,7 +85,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         b.layoutSave.setVisibility(View.GONE);
     }
 
-    private void yesEditText(){
+    private void yesEditText() {
         // Раздел Вязка
 
         // Первый день
@@ -269,37 +271,37 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
         // скрыть дата первой вязки
         b.text1.setVisibility(View.GONE);
         b.layoutKn1.setVisibility(View.GONE);
-        b.day1.setVisibility(View.GONE);
-        b.mount1.setVisibility(View.GONE);
-        b.age1.setVisibility(View.GONE);
+//        b.day1.setVisibility(View.GONE);
+//        b.mount1.setVisibility(View.GONE);
+//        b.age1.setVisibility(View.GONE);
 
         // скрыть дата второй вязки
         b.text2.setVisibility(View.GONE);
         b.layoutKn2.setVisibility(View.GONE);
-        b.day2.setVisibility(View.GONE);
-        b.mount2.setVisibility(View.GONE);
-        b.age1.setVisibility(View.GONE);
+//        b.day2.setVisibility(View.GONE);
+//        b.mount2.setVisibility(View.GONE);
+//        b.age1.setVisibility(View.GONE);
 
         // скрыть дата третьей вязки
         b.text3.setVisibility(View.GONE);
         b.layoutKn3.setVisibility(View.GONE);
-        b.day3.setVisibility(View.GONE);
-        b.mount3.setVisibility(View.GONE);
-        b.age3.setVisibility(View.GONE);
+//        b.day3.setVisibility(View.GONE);
+//        b.mount3.setVisibility(View.GONE);
+//        b.age3.setVisibility(View.GONE);
 
         // скрыть дата четвертой вязки
         b.text4.setVisibility(View.GONE);
         b.layoutKn4.setVisibility(View.GONE);
-        b.day4.setVisibility(View.GONE);
-        b.mount4.setVisibility(View.GONE);
-        b.age4.setVisibility(View.GONE);
+//        b.day4.setVisibility(View.GONE);
+//        b.mount4.setVisibility(View.GONE);
+//        b.age4.setVisibility(View.GONE);
 
         // скрыть дата пятой вязки
         b.text5.setVisibility(View.GONE);
         b.layoutKn5.setVisibility(View.GONE);
-        b.day5.setVisibility(View.GONE);
-        b.mount5.setVisibility(View.GONE);
-        b.age5.setVisibility(View.GONE);
+//        b.day5.setVisibility(View.GONE);
+//        b.mount5.setVisibility(View.GONE);
+//        b.age5.setVisibility(View.GONE);
 
         // скрыть кнопку удалить вязку
         b.layout666.setVisibility(View.GONE);
@@ -539,30 +541,140 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 callback.onButtonClicked3("knittingEdit", id, "edit");
                 break;
 
-                // слушатель на кнопку добавить вязку
+            // слушатель на кнопку добавить вязку
             case R.id.layout555:
-
+                showKnitting();
                 break;
 
-                // слушатель на кнопку удалить вязку
+            // слушатель на кнопку удалить вязку
             case R.id.layout666:
-
+                hideKnitting();
                 break;
 
-                // слушатель на кнопку добавить температуру
+            // слушатель на кнопку добавить температуру
             case R.id.layoutAddTemp:
-
+                showTemp();
                 break;
 
-                // слушатель на кнопку удалит температуру
+            // слушатель на кнопку удалит температуру
             case R.id.layoutAddTemp2:
-
+                hideTemp();
                 break;
 
-                // слушатель на кнопку добавить детеныша
+            // слушатель на кнопку добавить детеныша
             case R.id.linearLayout5:
-
+                // когда нажимаем добавить детеныша он вызывает экран создания
+                callback.onCreatFragment("createChild");
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("prefChild", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("child", "edit");
+                editor.apply();
                 break;
+        }
+    }
+
+    private void hideTemp() {
+        if (b.layoutTemp6.getVisibility() == View.VISIBLE) {
+            b.layoutTemp6.setVisibility(View.GONE);
+            countTemp = 5;
+            b.layoutAddTemp.setVisibility(View.VISIBLE);
+        } else if (b.layoutTemp5.getVisibility() == View.VISIBLE) {
+            b.layoutTemp5.setVisibility(View.GONE);
+            countTemp = 4;
+            b.layoutAddTemp.setVisibility(View.VISIBLE);
+        } else if (b.layoutTemp4.getVisibility() == View.VISIBLE) {
+            b.layoutTemp4.setVisibility(View.GONE);
+            countTemp = 3;
+            b.layoutAddTemp.setVisibility(View.VISIBLE);
+        } else if (b.layoutTemp3.getVisibility() == View.VISIBLE) {
+            b.layoutTemp3.setVisibility(View.GONE);
+            countTemp = 2;
+            b.layoutAddTemp.setVisibility(View.VISIBLE);
+        } else if (b.layoutTemp2.getVisibility() == View.VISIBLE) {
+            b.layoutTemp2.setVisibility(View.GONE);
+            b.layoutAddTemp2.setVisibility(View.GONE);
+            countTemp = 1;
+        }
+    }
+
+    private void showTemp() {
+        countTemp++;
+        if (countTemp == 2) {
+            b.layoutTemp2.setVisibility(View.VISIBLE);
+            b.temp2.setVisibility(View.VISIBLE);
+            b.simvol2.setVisibility(View.VISIBLE);
+            b.layoutAddTemp2.setVisibility(View.VISIBLE);
+        } else if (countTemp == 3) {
+            b.layoutTemp3.setVisibility(View.VISIBLE);
+            b.temp3.setVisibility(View.VISIBLE);
+            b.simvol3.setVisibility(View.VISIBLE);
+            b.layoutAddTemp2.setVisibility(View.VISIBLE);
+        } else if (countTemp == 4) {
+            b.layoutTemp4.setVisibility(View.VISIBLE);
+            b.temp4.setVisibility(View.VISIBLE);
+            b.simvol4.setVisibility(View.VISIBLE);
+            b.layoutAddTemp2.setVisibility(View.VISIBLE);
+        } else if (countTemp == 5) {
+            b.layoutTemp5.setVisibility(View.VISIBLE);
+            b.temp5.setVisibility(View.VISIBLE);
+            b.simvol5.setVisibility(View.VISIBLE);
+            b.layoutAddTemp2.setVisibility(View.VISIBLE);
+        } else if (countTemp == 6) {
+            b.layoutTemp6.setVisibility(View.VISIBLE);
+            b.temp6.setVisibility(View.VISIBLE);
+            b.simvol6.setVisibility(View.VISIBLE);
+            b.layoutAddTemp2.setVisibility(View.VISIBLE);
+            b.layoutAddTemp.setVisibility(View.GONE);
+        }
+    }
+
+    private void hideKnitting() {
+        if (b.layoutKn5.getVisibility() == View.VISIBLE) {
+            b.text5.setVisibility(View.GONE);
+            b.layoutKn5.setVisibility(View.GONE);
+            countKn = 4;
+            b.layout555.setVisibility(View.VISIBLE);
+        } else if (b.layoutKn4.getVisibility() == View.VISIBLE) {
+            b.text4.setVisibility(View.GONE);
+            b.layoutKn4.setVisibility(View.GONE);
+            countKn = 3;
+            b.layout555.setVisibility(View.VISIBLE);
+        } else if (b.layoutKn3.getVisibility() == View.VISIBLE) {
+            b.text3.setVisibility(View.GONE);
+            b.layoutKn3.setVisibility(View.GONE);
+            countKn = 2;
+            b.layout555.setVisibility(View.VISIBLE);
+        } else if (b.layoutKn2.getVisibility() == View.VISIBLE) {
+            b.text2.setVisibility(View.GONE);
+            b.layoutKn2.setVisibility(View.GONE);
+            countKn = 1;
+            b.layout555.setVisibility(View.VISIBLE);
+            b.layout666.setVisibility(View.GONE);
+        }
+    }
+
+    private void showKnitting() {
+        if (countKn == 1) {
+            b.layout666.setVisibility(View.VISIBLE);
+            countKn = 2;
+            b.text2.setVisibility(View.VISIBLE);
+            b.layoutKn2.setVisibility(View.VISIBLE);
+        } else if (countKn == 2) {
+            countKn = 3;
+            b.layout666.setVisibility(View.VISIBLE);
+            b.text3.setVisibility(View.VISIBLE);
+            b.layoutKn3.setVisibility(View.VISIBLE);
+        } else if (countKn == 3) {
+            countKn = 4;
+            b.layout666.setVisibility(View.VISIBLE);
+            b.text4.setVisibility(View.VISIBLE);
+            b.layoutKn4.setVisibility(View.VISIBLE);
+        } else if (countKn == 4) {
+            countKn = 5;
+            b.layout555.setVisibility(View.GONE);
+            b.layout666.setVisibility(View.VISIBLE);
+            b.text5.setVisibility(View.VISIBLE);
+            b.layoutKn5.setVisibility(View.VISIBLE);
         }
     }
 
@@ -600,7 +712,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.genderChild5.setVisibility(View.VISIBLE);
                 b.gataChild5.setVisibility(View.VISIBLE);
             }
-            if(edit == true){
+            if (edit == true) {
                 b.linearLayout5.setVisibility(View.VISIBLE);
             }
 
@@ -706,7 +818,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.poleNote3.setVisibility(View.VISIBLE);
             }
 
-            if(edit == true){
+            if (edit == true) {
                 b.layoutAddTemp.setVisibility(View.VISIBLE);
             }
         } else if (infoCount == 1) {
@@ -809,7 +921,7 @@ public class Fragment_Knit_Show extends Fragment implements View.OnClickListener
                 b.age5.setVisibility(View.VISIBLE);
             }
 
-            if(edit == true){
+            if (edit == true) {
                 b.layout555.setVisibility(View.VISIBLE);
             }
         } else if (showCount == 1) {
