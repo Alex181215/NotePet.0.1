@@ -764,6 +764,12 @@ public class Create extends AppCompatActivity implements SampleCallback {
 
             layotBarPets();
             textHeader("Добавить детеныша");
+        } else if(key.equals("medicalCardlayout2")){
+            Fragment_MedicalCart_Show fragmentMedicalCartShow = new Fragment_MedicalCart_Show();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragmentMedicalCartShow);
+            transaction.commit();
+            layotBarMenu();
         }
     }
 
